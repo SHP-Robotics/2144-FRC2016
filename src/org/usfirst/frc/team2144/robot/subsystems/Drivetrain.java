@@ -4,7 +4,6 @@ package org.usfirst.frc.team2144.robot.subsystems;
 import org.usfirst.frc.team2144.robot.RobotMap;
 import org.usfirst.frc.team2144.robot.commands.GatorDrive;
 
-import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;

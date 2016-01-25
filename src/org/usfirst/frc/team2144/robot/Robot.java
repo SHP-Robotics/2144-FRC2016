@@ -1,15 +1,13 @@
 
 package org.usfirst.frc.team2144.robot;
 
+import org.usfirst.frc.team2144.robot.subsystems.Drivetrain;
+
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
-import org.usfirst.frc.team2144.robot.commands.GatorDrive;
-import org.usfirst.frc.team2144.robot.commands.ResetEverything;
-import org.usfirst.frc.team2144.robot.subsystems.Drivetrain;
 
 /**
  * The VM is configured to automatically run this class, and to call the

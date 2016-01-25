@@ -1,7 +1,6 @@
 package org.usfirst.frc.team2144.robot.commands;
 
 import org.usfirst.frc.team2144.robot.OI;
-import org.usfirst.frc.team2144.robot.subsystems.ArmBase;
 import org.usfirst.frc.team2144.robot.subsystems.Drivetrain;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -20,7 +19,6 @@ public abstract class CommandBase extends Command {
 	public static OI oi;
 	// Create a single static instance of all of your subsystems
 	public static Drivetrain drivetrain = new Drivetrain();
-	public static ArmBase armBase = new ArmBase();
 
 	public static void init() {
 		// This MUST be here. If the OI creates Commands (which it very likely
@@ -32,7 +30,6 @@ public abstract class CommandBase extends Command {
 
 		// Show what command your subsystem is running on the SmartDashboard
 		SmartDashboard.putData(drivetrain);
-		SmartDashboard.putData(armBase);
 	}
 
 	public CommandBase(String name) {
