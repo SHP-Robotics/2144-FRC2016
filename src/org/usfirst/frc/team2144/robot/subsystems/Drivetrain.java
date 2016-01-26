@@ -17,15 +17,13 @@ public class Drivetrain extends Subsystem {
 	// here. Call these from Commands.
 
 	public RobotDrive robit;
-	public Talon fLeft, fRight, bLeft, bRight;
+	public Talon left, right;
 	// public Encoder leftEnc, rightEnc;
 
 	public Drivetrain() {
-		fLeft = new Talon(RobotMap.fLeftPort);
-		fRight = new Talon(RobotMap.fRightPort);
-		bLeft = new Talon(RobotMap.bLeftPort);
-		bRight = new Talon(RobotMap.bRightPort);
-		robit = new RobotDrive(fLeft, bLeft, fRight, bRight);
+		left = new Talon(RobotMap.leftPort);
+		right = new Talon(RobotMap.rightPort);
+		robit = new RobotDrive(left, right);
 		// leftEnc = new Encoder(RobotMap.leftEncPortA, RobotMap.leftEncPortB);
 		// rightEnc = new Encoder(RobotMap.rightEncPortA,
 		// RobotMap.rightEncPortB);
