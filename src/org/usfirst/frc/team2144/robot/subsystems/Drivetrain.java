@@ -37,7 +37,7 @@ public class Drivetrain extends Subsystem {
 	}
 
 	public void tankDrive(boolean isPrecise, double leftStickY, double rightStickY) {
-		if (isPrecise)
+		if (!isPrecise)
 			robit.tankDrive(leftStickY, rightStickY);
 		else
 			robit.tankDrive(leftStickY / 2, rightStickY / 2);
