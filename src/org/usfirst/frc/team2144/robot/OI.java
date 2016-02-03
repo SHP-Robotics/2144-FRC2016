@@ -47,6 +47,14 @@ public class OI {
 	public boolean getSpool() {
 		return left.getRawButton(1);
 	}
+	
+	public boolean getIntake() {
+		return left.getRawButton(3);
+	}
+	
+	public boolean getIntakePitch() {
+		return right.getRawButton(2);
+	}
 
 	// There are a few additional built in buttons you can use. Additionally,
 	// by subclassing Button you can create custom triggers and bind those to

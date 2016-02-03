@@ -16,6 +16,19 @@ public class IntakeDrive extends CommandBase {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
+		if (oi.getIntake()) {
+			intake.set(-0.4);
+		} else if (oi.getSpool()) {
+			intake.set(1);
+		} else {
+			intake.set(0);
+		}
+
+		if (oi.getFire()) {
+			intake.setServo(0.5);
+		} else {
+			intake.setServo(0.9);
+		}
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

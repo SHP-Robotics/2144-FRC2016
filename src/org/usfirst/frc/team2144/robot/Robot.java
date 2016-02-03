@@ -2,6 +2,8 @@
 package org.usfirst.frc.team2144.robot;
 
 import org.usfirst.frc.team2144.robot.subsystems.Drivetrain;
+import org.usfirst.frc.team2144.robot.subsystems.Intake;
+import org.usfirst.frc.team2144.robot.subsystems.IntakePitch;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -19,6 +21,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Robot extends IterativeRobot {
 
 	public static final Drivetrain drivetrain = new Drivetrain();
+	public static final Intake intake = new Intake();
+	public static final IntakePitch intakePitch = new IntakePitch();
 	public static OI oi;
 
 	Command autonomousCommand;
