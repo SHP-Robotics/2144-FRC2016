@@ -16,5 +16,9 @@ public class RobotMap {
 	public static final int leftEncPortB = 1;
 	public static final int rightEncPortA = 2;
 	public static final int rightEncPortB = 3;
+	
+	public static final int intakeTalonPort = 3;
+	
+	public static final int intakeServoPort = 9;
 
 }

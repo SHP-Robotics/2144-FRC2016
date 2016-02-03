@@ -16,10 +16,6 @@ public class OI {
 	Joystick right = new Joystick(1);
 	
 
-	public boolean getPrecise() {
-		return left.getRawButton(1);
-	}
-
 	public boolean getb4() {
 		return left.getRawButton(4);
 	}
@@ -42,6 +38,14 @@ public class OI {
 	
 	public int getStick2POV() {
 		return right.getPOV();
+	}
+	
+	public boolean getFire() {
+		return right.getRawButton(1);
+	}
+	
+	public boolean getSpool() {
+		return left.getRawButton(1);
 	}
 
 	// There are a few additional built in buttons you can use. Additionally,
