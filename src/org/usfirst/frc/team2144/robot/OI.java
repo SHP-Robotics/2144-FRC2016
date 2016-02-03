@@ -14,15 +14,6 @@ public class OI {
 
 	Joystick left = new Joystick(0);
 	Joystick right = new Joystick(1);
-	
-
-	public boolean getb4() {
-		return left.getRawButton(4);
-	}
-
-	public boolean getb5() {
-		return left.getRawButton(5);
-	}
 
 	public double getStickX() {
 		return left.getX();
@@ -31,29 +22,29 @@ public class OI {
 	public double getStickY() {
 		return left.getY();
 	}
-	
+
 	public double getStick2Y() {
 		return right.getY();
 	}
-	
+
 	public int getStick2POV() {
 		return right.getPOV();
 	}
-	
+
 	public boolean getFire() {
-		return right.getRawButton(1);
+		return right.getRawButton(ControlMap.fireButton);
 	}
-	
+
 	public boolean getSpool() {
-		return left.getRawButton(1);
+		return left.getRawButton(ControlMap.spoolButton);
 	}
-	
+
 	public boolean getIntake() {
-		return left.getRawButton(3);
+		return left.getRawButton(ControlMap.intakeButton);
 	}
-	
+
 	public boolean getIntakePitch() {
-		return right.getRawButton(2);
+		return right.getRawButton(ControlMap.intakePitchButton);
 	}
 
 	// There are a few additional built in buttons you can use. Additionally,
