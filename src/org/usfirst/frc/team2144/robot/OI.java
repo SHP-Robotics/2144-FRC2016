@@ -30,6 +30,10 @@ public class OI {
 	public int getStick2POV() {
 		return right.getPOV();
 	}
+	
+	public boolean getPrecise() {
+		return false;
+	}
 
 	public boolean getFire() {
 		return right.getRawButton(ControlMap.fireButton);
