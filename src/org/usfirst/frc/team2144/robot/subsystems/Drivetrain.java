@@ -30,7 +30,7 @@ public class Drivetrain extends Subsystem {
 	}
 
 	public void arcadeDrive(boolean isPrecise, double stickX, double stickY) {
-		if (isPrecise)
+		if (!isPrecise)
 			robit.arcadeDrive(stickY, stickX);
 		else
 			robit.arcadeDrive(stickY / 2, stickX / 2);
