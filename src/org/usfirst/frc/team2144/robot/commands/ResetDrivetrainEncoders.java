@@ -1,20 +1,22 @@
 package org.usfirst.frc.team2144.robot.commands;
 
+import org.usfirst.frc.team2144.robot.Robot;
+
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class ResetDrivetrainEncoders extends CommandBase {
+public class ResetDrivetrainEncoders extends Command {
 
     public ResetDrivetrainEncoders() {
         // Use requires() here to declare subsystem dependencies
-        requires(drivetrain);
+        requires(Robot.drivetrain);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	drivetrain.reset_encoders();
+    	Robot.drivetrain.reset_encoders();
     }
 
     // Called repeatedly when this Command is scheduled to run

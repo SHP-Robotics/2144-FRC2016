@@ -1,15 +1,18 @@
 package org.usfirst.frc.team2144.robot.commands;
 
 import org.usfirst.frc.team2144.robot.Constants;
+import org.usfirst.frc.team2144.robot.Robot;
+
+import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class IntakeDrive extends CommandBase {
+public class IntakeDrive extends Command {
 
 	public IntakeDrive() {
 		// Use requires() here to declare subsystem dependencies
-		requires(intake);
+		requires(Robot.intake);
 	}
 
 	// Called just before this Command runs the first time
@@ -18,18 +21,18 @@ public class IntakeDrive extends CommandBase {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		if (oi.getIntake()) {
-			intake.set(Constants.intakeIntakeSpeed);
-		} else if (oi.getSpool()) {
-			intake.set(Constants.intakeFireSpeed);
+		if (Robot.oi.getIntake()) {
+			Robot.intake.set(Constants.intakeIntakeSpeed);
+		} else if (Robot.oi.getSpool()) {
+			Robot.intake.set(Constants.intakeFireSpeed);
 		} else {
-			intake.set(Constants.intakeRestingSpeed);
+			Robot.intake.set(Constants.intakeRestingSpeed);
 		}
 
-		if (oi.getFire()) {
-			intake.setServo(Constants.intakeServoFire);
+		if (Robot.oi.getFire()) {
+			Robot.intake.setServo(Constants.intakeServoFire);
 		} else {
-			intake.setServo(Constants.intakeServoResting);
+			Robot.intake.setServo(Constants.intakeServoResting);
 		}
 	}
 
