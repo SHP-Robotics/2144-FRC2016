@@ -19,7 +19,7 @@ public class RobotMap {
 
 	public static final int intakeTalonPort = 3; // intake talons
 
-	public static final int intakeServoPort = 9; // intake servo
+	public static final int intakeServoPort = 2; // intake servo
 
 	public static final int intakePitchPotPort = 0; // intake actuator pot
 	public static final int intakePitchPort = 4; // intake act talon

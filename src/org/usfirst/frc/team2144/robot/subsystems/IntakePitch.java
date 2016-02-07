@@ -1,5 +1,6 @@
 package org.usfirst.frc.team2144.robot.subsystems;
 
+import org.usfirst.frc.team2144.robot.Constants;
 import org.usfirst.frc.team2144.robot.RobotMap;
 import org.usfirst.frc.team2144.robot.commands.IntakePitchDrive;
 
@@ -17,7 +18,7 @@ public class IntakePitch extends PIDSubsystem {
 
 	// Initialize your subsystem here
 	public IntakePitch() {
-		super(3, 0, 0);
+		super(Constants.intakeP, Constants.intakeI, Constants.intakeD);
 		// Use these to get going:
 		// setSetpoint() - Sets where the PID controller should move the system
 		// to

@@ -15,7 +15,7 @@ public class IntakePitchDrive extends CommandBase {
 	// Called just before this Command runs the first time
 	protected void initialize() {
 		intakePitch.enable();
-		intakePitch.setAbsoluteTolerance(0.02);
+		intakePitch.setAbsoluteTolerance(0.005);
 	}
 
 	// Called repeatedly when this Command is scheduled to run

@@ -1,5 +1,7 @@
 package org.usfirst.frc.team2144.robot.commands;
 
+import org.usfirst.frc.team2144.robot.Constants;
+
 /**
  *
  */
@@ -17,17 +19,17 @@ public class IntakeDrive extends CommandBase {
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
 		if (oi.getIntake()) {
-			intake.set(-0.4);
+			intake.set(Constants.intakeIntakeSpeed);
 		} else if (oi.getSpool()) {
-			intake.set(1);
+			intake.set(Constants.intakeFireSpeed);
 		} else {
-			intake.set(0);
+			intake.set(Constants.intakeRestingSpeed);
 		}
 
 		if (oi.getFire()) {
-			intake.setServo(0.5);
+			intake.setServo(Constants.intakeServoFire);
 		} else {
-			intake.setServo(0.9);
+			intake.setServo(Constants.intakeServoResting);
 		}
 	}
 

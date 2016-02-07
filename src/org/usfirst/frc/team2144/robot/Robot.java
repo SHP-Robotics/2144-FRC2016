@@ -45,6 +45,8 @@ public class Robot extends IterativeRobot {
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null)
 			autonomousCommand.start();
+		
+		drivetrain.reset_encoders();
 	}
 
 	public void autonomousPeriodic() {
@@ -58,6 +60,8 @@ public class Robot extends IterativeRobot {
 		// this line or comment it out.
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
+		
+		drivetrain.reset_encoders();
 	}
 
 	public void teleopPeriodic() {
