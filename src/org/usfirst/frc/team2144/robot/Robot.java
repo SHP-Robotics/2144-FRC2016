@@ -20,9 +20,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Robot extends IterativeRobot {
 
-	public static Drivetrain drivetrain = new Drivetrain();
-	public static Intake intake = new Intake();
-	public static IntakePitch intakePitch = new IntakePitch();
+	public static final Drivetrain drivetrain = new Drivetrain();
+	public static final Intake intake = new Intake();
+	public static final IntakePitch intakePitch = new IntakePitch();
 	public static OI oi;
 
 	Command autonomousCommand;
@@ -62,20 +62,18 @@ public class Robot extends IterativeRobot {
 			autonomousCommand.cancel();
 		
 		drivetrain.reset_encoders();
-		
 	}
 
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
-		
 	}
 
 	public void disabledInit() {
-		Scheduler.getInstance().enable();
+
 	}
 
 	public void disabledPeriodic() {
-		
+		Scheduler.getInstance().run();
 
 	}
 

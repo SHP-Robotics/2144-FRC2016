@@ -1,32 +1,29 @@
 package org.usfirst.frc.team2144.robot.commands;
 
 import org.usfirst.frc.team2144.robot.Constants;
-import org.usfirst.frc.team2144.robot.Robot;
-
-import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class IntakePitchDrive extends Command {
+public class IntakePitchDrive extends CommandBase {
 
 	public IntakePitchDrive() {
 		// Use requires() here to declare subsystem dependencies
-		requires(Robot.intakePitch);
+		requires(intakePitch);
 	}
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
-		Robot.intakePitch.enable();
-		Robot.intakePitch.setAbsoluteTolerance(0.005);
+		intakePitch.enable();
+		intakePitch.setAbsoluteTolerance(0.005);
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		if (Robot.oi.getIntakePitch()) {
-			Robot.intakePitch.setSetpoint(Constants.actDown);
+		if (oi.getIntakePitch()) {
+			intakePitch.setSetpoint(Constants.actDown);
 		} else {
-			Robot.intakePitch.setSetpoint(Constants.actUp);
+			intakePitch.setSetpoint(Constants.actUp);
 		}
 	}
 
