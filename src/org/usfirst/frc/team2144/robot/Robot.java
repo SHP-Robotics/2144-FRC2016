@@ -1,6 +1,7 @@
 
 package org.usfirst.frc.team2144.robot;
 
+import org.usfirst.frc.team2144.robot.commands.CommandBase;
 import org.usfirst.frc.team2144.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team2144.robot.subsystems.Intake;
 import org.usfirst.frc.team2144.robot.subsystems.IntakePitch;
@@ -20,10 +21,10 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Robot extends IterativeRobot {
 
-	public static final Drivetrain drivetrain = new Drivetrain();
-	public static final Intake intake = new Intake();
-	public static final IntakePitch intakePitch = new IntakePitch();
-	public static OI oi;
+//	public static final Drivetrain drivetrain = new Drivetrain();
+//	public static final Intake intake = new Intake();
+//	public static final IntakePitch intakePitch = new IntakePitch();
+//	public static OI oi;
 
 	Command autonomousCommand;
 
@@ -32,12 +33,14 @@ public class Robot extends IterativeRobot {
 	 * used for any initialization code.
 	 */
 	public void robotInit() {
-		oi = new OI();
+//		oi = new OI();
 		// instantiate the command used for the autonomous period
 		autonomousCommand = null;
 
 		// put everything on the SmartDashboard
+		CommandBase.init();
 		SmartDashboard.putData(Scheduler.getInstance());
+		
 
 	}
 
@@ -46,7 +49,7 @@ public class Robot extends IterativeRobot {
 		if (autonomousCommand != null)
 			autonomousCommand.start();
 		
-		drivetrain.reset_encoders();
+		CommandBase.drivetrain.reset_encoders();
 	}
 
 	public void autonomousPeriodic() {
@@ -61,7 +64,7 @@ public class Robot extends IterativeRobot {
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
 		
-		drivetrain.reset_encoders();
+		CommandBase.drivetrain.reset_encoders();
 	}
 
 	public void teleopPeriodic() {

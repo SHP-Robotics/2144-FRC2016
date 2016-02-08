@@ -8,6 +8,7 @@ import org.usfirst.frc.team2144.robot.Constants;
 public class IntakePitchDrive extends CommandBase {
 
 	public IntakePitchDrive() {
+		
 		// Use requires() here to declare subsystem dependencies
 		requires(intakePitch);
 	}
