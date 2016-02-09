@@ -17,5 +17,7 @@ public class Constants {
 	public static final double intakeP = 3;
 	public static final double intakeI = 0;
 	public static final double intakeD = 0;
+	
+	public static final double winchSpeed = 0.2;
 
 }

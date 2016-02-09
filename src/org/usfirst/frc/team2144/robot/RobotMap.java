@@ -23,5 +23,7 @@ public class RobotMap {
 
 	public static final int intakePitchPotPort = 0; // intake actuator pot
 	public static final int intakePitchPort = 4; // intake act talon
+	
+	public static final int winchPort = 6;
 
 }

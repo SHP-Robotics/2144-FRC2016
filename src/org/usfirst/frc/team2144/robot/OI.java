@@ -50,6 +50,10 @@ public class OI {
 	public boolean getIntakePitch() {
 		return right.getRawButton(ControlMap.intakePitchButton);
 	}
+	
+	public boolean getWinch() {
+		return left.getRawButton(ControlMap.winchButton);
+	}
 
 	// There are a few additional built in buttons you can use. Additionally,
 	// by subclassing Button you can create custom triggers and bind those to
