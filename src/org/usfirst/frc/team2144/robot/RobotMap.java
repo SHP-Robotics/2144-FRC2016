@@ -5,6 +5,7 @@ package org.usfirst.frc.team2144.robot;
  * to a variable name. This provides flexibility changing wiring, makes checking
  * the wiring easier and significantly reduces the number of magic numbers
  * floating around.
+ * 
  * @author :)
  */
 public class RobotMap {
@@ -23,5 +24,10 @@ public class RobotMap {
 
 	public static final int intakePitchPotPort = 0; // intake actuator pot
 	public static final int intakePitchPort = 4; // intake act talon
+
+	public static final int mastPitchPort = 5; // mast pitch motor port
+
+	public static final int mastPitchEncA = 4; // mast pitch enc A
+	public static final int mastPitchEncB = 5; // mast pitch enc B
 
 }

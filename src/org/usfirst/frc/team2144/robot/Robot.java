@@ -1,6 +1,7 @@
 
 package org.usfirst.frc.team2144.robot;
 
+import org.usfirst.frc.team2144.robot.commands.CommandBase;
 import org.usfirst.frc.team2144.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team2144.robot.subsystems.Intake;
 import org.usfirst.frc.team2144.robot.subsystems.IntakePitch;
@@ -38,6 +39,8 @@ public class Robot extends IterativeRobot {
 
 		// put everything on the SmartDashboard
 		SmartDashboard.putData(Scheduler.getInstance());
+		
+		CommandBase.init();
 
 	}
 
