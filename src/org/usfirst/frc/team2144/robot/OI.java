@@ -1,6 +1,10 @@
 package org.usfirst.frc.team2144.robot;
 
+import org.usfirst.frc.team2144.robot.commands.MastPitchDown;
+import org.usfirst.frc.team2144.robot.commands.MastPitchUp;
+
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -8,12 +12,16 @@ import edu.wpi.first.wpilibj.Joystick;
  */
 public class OI {
 
-	public OI() {
-
-	}
-
 	Joystick left = new Joystick(0);
 	Joystick right = new Joystick(1);
+
+	JoystickButton mastPitchUpButton = new JoystickButton(left, ControlMap.mastPitchUpButton);
+	JoystickButton mastPitchDownButton = new JoystickButton(left, ControlMap.mastPitchDownButton);
+
+	public OI() {
+		mastPitchUpButton.whenPressed(new MastPitchUp());
+		mastPitchDownButton.whenPressed(new MastPitchDown());
+	}
 
 	public double getStickX() {
 		return left.getX();
@@ -30,7 +38,7 @@ public class OI {
 	public int getStick2POV() {
 		return right.getPOV();
 	}
-	
+
 	public boolean getPrecise() {
 		return false;
 	}
@@ -50,7 +58,7 @@ public class OI {
 	public boolean getIntakePitch() {
 		return right.getRawButton(ControlMap.intakePitchButton);
 	}
-	
+
 	public boolean getWinch() {
 		return left.getRawButton(ControlMap.winchButton);
 	}

@@ -26,7 +26,7 @@ public class Robot extends IterativeRobot {
 	// public static final Drivetrain drivetrain = new Drivetrain();
 	// public static final Intake intake = new Intake();
 	// public static final IntakePitch intakePitch = new IntakePitch();
-	// public static OI oi;
+	public static OI oi;
 
 	Command autonomousCommand;
 	SendableChooser autoChooser;
@@ -36,7 +36,7 @@ public class Robot extends IterativeRobot {
 	 * used for any initialization code.
 	 */
 	public void robotInit() {
-		// oi = new OI();
+		oi = new OI();
 		// instantiate the command used for the autonomous period
 		autoChooser = new SendableChooser();
 		autoChooser.addDefault("Low Bar Auto", new LowBarAuto());
