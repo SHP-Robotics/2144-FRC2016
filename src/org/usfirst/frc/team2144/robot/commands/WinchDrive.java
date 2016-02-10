@@ -20,6 +20,8 @@ public class WinchDrive extends CommandBase {
 	protected void execute() {
 		if (oi.getWinch()) {
 			winch.drive(Constants.winchSpeed);
+		} else {
+			winch.drive(0);
 		}
 	}
 
