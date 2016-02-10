@@ -4,6 +4,7 @@ import org.usfirst.frc.team2144.robot.OI;
 import org.usfirst.frc.team2144.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team2144.robot.subsystems.Intake;
 import org.usfirst.frc.team2144.robot.subsystems.IntakePitch;
+import org.usfirst.frc.team2144.robot.subsystems.MastPitch;
 import org.usfirst.frc.team2144.robot.subsystems.Winch;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -25,6 +26,7 @@ public abstract class CommandBase extends Command {
 	public static Intake intake = new Intake();
 	public static IntakePitch intakePitch = new IntakePitch();
 	public static Winch winch = new Winch();
+	public static MastPitch mastPitch = new MastPitch();
 
 	public static void init() {
 		// This MUST be here. If the OI creates Commands (which it very likely

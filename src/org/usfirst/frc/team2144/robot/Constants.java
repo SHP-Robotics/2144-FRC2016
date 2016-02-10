@@ -5,6 +5,7 @@ public class Constants {
 	// linear actuator up/down
 	public static final double actUp = 0.04;
 	public static final double actDown = 0.62;
+	public static final double actHalfDown = 0.40;
 
 	// intake motor speeds and servo pos
 	public static final double intakeIntakeSpeed = -0.3;
