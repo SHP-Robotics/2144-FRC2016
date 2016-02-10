@@ -2,6 +2,7 @@
 package org.usfirst.frc.team2144.robot;
 
 import org.usfirst.frc.team2144.robot.commands.CommandBase;
+import org.usfirst.frc.team2144.robot.commands.LowBarAuto;
 import org.usfirst.frc.team2144.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team2144.robot.subsystems.Intake;
 import org.usfirst.frc.team2144.robot.subsystems.IntakePitch;
@@ -10,6 +11,7 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
@@ -21,35 +23,39 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Robot extends IterativeRobot {
 
-//	public static final Drivetrain drivetrain = new Drivetrain();
-//	public static final Intake intake = new Intake();
-//	public static final IntakePitch intakePitch = new IntakePitch();
-//	public static OI oi;
+	// public static final Drivetrain drivetrain = new Drivetrain();
+	// public static final Intake intake = new Intake();
+	// public static final IntakePitch intakePitch = new IntakePitch();
+	// public static OI oi;
 
 	Command autonomousCommand;
+	SendableChooser autoChooser;
 
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
 	 */
 	public void robotInit() {
-//		oi = new OI();
+		// oi = new OI();
 		// instantiate the command used for the autonomous period
-		autonomousCommand = null;
+		autoChooser = new SendableChooser();
+		autoChooser.addDefault("Low Bar Auto", new LowBarAuto());
+		autoChooser.addObject("No Auto", null);
+
+		SmartDashboard.putData("Auto Chooser", autoChooser);
 
 		// put everything on the SmartDashboard
 		CommandBase.init();
 		SmartDashboard.putData(Scheduler.getInstance());
-		
 
 	}
 
 	public void autonomousInit() {
 		// schedule the autonomous command (example)
+		autonomousCommand = (Command) autoChooser.getSelected();
+
 		if (autonomousCommand != null)
 			autonomousCommand.start();
-		
-		CommandBase.drivetrain.reset_encoders();
 	}
 
 	public void autonomousPeriodic() {
@@ -63,7 +69,7 @@ public class Robot extends IterativeRobot {
 		// this line or comment it out.
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
-		
+
 		CommandBase.drivetrain.reset_encoders();
 	}
 
