@@ -1,5 +1,6 @@
 package org.usfirst.frc.team2144.robot;
 
+import org.usfirst.frc.team2144.robot.commands.IntakePitchOverride;
 import org.usfirst.frc.team2144.robot.commands.MastPitchDown;
 import org.usfirst.frc.team2144.robot.commands.MastPitchUp;
 
@@ -17,10 +18,12 @@ public class OI {
 
 	JoystickButton mastPitchUpButton = new JoystickButton(left, ControlMap.mastPitchUpButton);
 	JoystickButton mastPitchDownButton = new JoystickButton(left, ControlMap.mastPitchDownButton);
+	JoystickButton actEmergOverrideButton = new JoystickButton(right, ControlMap.actEmergOverrideButton);
 
 	public OI() {
 		mastPitchUpButton.whenPressed(new MastPitchUp());
 		mastPitchDownButton.whenPressed(new MastPitchDown());
+		actEmergOverrideButton.whenPressed(new IntakePitchOverride());
 	}
 
 	public double getStickX() {
@@ -61,6 +64,16 @@ public class OI {
 
 	public boolean getWinch() {
 		return left.getRawButton(ControlMap.winchButton);
+	}
+	
+	public double getActOverride() {
+		if (left.getRawButton(11)) {
+			return -0.5;
+		} else if (left.getRawButton(10)) {
+			return 0.5;
+		} else {
+			return 0;
+		}
 	}
 
 	// There are a few additional built in buttons you can use. Additionally,

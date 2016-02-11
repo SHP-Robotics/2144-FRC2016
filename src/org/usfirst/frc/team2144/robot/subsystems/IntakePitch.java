@@ -31,6 +31,10 @@ public class IntakePitch extends PIDSubsystem {
 		// Set the default command for a subsystem here.
 		setDefaultCommand(new IntakePitchDrive());
 	}
+	
+	public void drive(double speed) {
+		talon.set(speed);
+	}
 
 	protected double returnPIDInput() {
 		// Return your input value for the PID loop
