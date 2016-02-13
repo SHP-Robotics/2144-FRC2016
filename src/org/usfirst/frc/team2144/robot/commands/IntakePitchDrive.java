@@ -24,7 +24,7 @@ public class IntakePitchDrive extends CommandBase {
 		if (oi.getIntakePitch()) {
 			intakePitch.setSetpoint(Constants.actDown);
 		} else {
-			intakePitch.setSetpoint(Constants.actUp);
+			intakePitch.setSetpoint(oi.getIntakePitchPitch());
 		}
 	}
 

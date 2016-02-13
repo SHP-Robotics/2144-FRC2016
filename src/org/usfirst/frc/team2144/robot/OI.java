@@ -65,7 +65,7 @@ public class OI {
 	public boolean getWinch() {
 		return left.getRawButton(ControlMap.winchButton);
 	}
-	
+
 	public double getActOverride() {
 		if (left.getRawButton(11)) {
 			return -0.5;
@@ -74,6 +74,12 @@ public class OI {
 		} else {
 			return 0;
 		}
+	}
+
+	public double getIntakePitchPitch() {
+		double i = (right.getThrottle() + 1) / 2;
+		i = (i * 0.555) + 0.065;
+		return i;
 	}
 
 	// There are a few additional built in buttons you can use. Additionally,
