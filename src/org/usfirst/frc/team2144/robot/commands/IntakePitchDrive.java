@@ -2,13 +2,15 @@ package org.usfirst.frc.team2144.robot.commands;
 
 import org.usfirst.frc.team2144.robot.Constants;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 /**
  *
  */
 public class IntakePitchDrive extends CommandBase {
 
 	public IntakePitchDrive() {
-		
+
 		// Use requires() here to declare subsystem dependencies
 		requires(intakePitch);
 	}
@@ -26,6 +28,7 @@ public class IntakePitchDrive extends CommandBase {
 		} else {
 			intakePitch.setSetpoint(oi.getIntakePitchPitch());
 		}
+
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
@@ -41,4 +44,5 @@ public class IntakePitchDrive extends CommandBase {
 	// subsystems is scheduled to run
 	protected void interrupted() {
 	}
+
 }

@@ -6,6 +6,9 @@ public class Constants {
 	public static final double actUp = 0.065;
 	public static final double actDown = 0.62;
 	public static final double actHalfDown = 0.40;
+	
+	public static final double actUpAngle = 53;
+	public static final double actDownAngle = -20;
 
 	// intake motor speeds and servo pos
 	public static final double intakeIntakeSpeed = -0.3;
