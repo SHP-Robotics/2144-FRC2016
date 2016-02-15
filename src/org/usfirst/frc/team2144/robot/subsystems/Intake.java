@@ -3,6 +3,7 @@ package org.usfirst.frc.team2144.robot.subsystems;
 import org.usfirst.frc.team2144.robot.RobotMap;
 import org.usfirst.frc.team2144.robot.commands.IntakeDrive;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -17,10 +18,12 @@ public class Intake extends Subsystem {
 	
 	public Talon talon; 
 	public Servo servo;
+	public DigitalInput limit;
 	
 	public Intake() {
 		talon = new Talon(RobotMap.intakeTalonPort);
 		servo = new Servo(RobotMap.intakeServoPort);
+		limit = new DigitalInput(RobotMap.intakeLimitPort);
 	}
 	
 	public void set(double speed) {
@@ -35,5 +38,9 @@ public class Intake extends Subsystem {
         // Set the default command for a subsystem here.
         setDefaultCommand(new IntakeDrive());
     }
+
+	public boolean hasBall() {
+		return limit.get();
+	}
 }
 

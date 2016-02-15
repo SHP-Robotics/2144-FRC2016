@@ -24,8 +24,15 @@ public class LowBarAuto extends CommandGroup {
 		// e.g. if Command1 requires chassis, and Command2 requires arm,
 		// a CommandGroup containing them would require both the chassis and the
 		// arm.
+		
+		// IntakePitchUp
 		addSequential(new ResetDrivetrainEncoders());
-		addSequential(new AutoDrive(0.6, 0.6, 100, 100));
-
+		addSequential(new AutoDrive(0.6, 0.6, 1000, 1000)); // drive up to low bar
+		// IntakePitchDown
+		addSequential(new ResetDrivetrainEncoders());
+		addSequential(new AutoDrive(0.4, 0.4, 500, 500));
+		// IntakePitchUp
+		addSequential(new ResetDrivetrainEncoders());
+		addSequential(new AutoDrive(0.6, 0.6, 500, 500));
 	}
 }

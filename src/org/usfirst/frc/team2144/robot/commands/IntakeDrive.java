@@ -2,6 +2,8 @@ package org.usfirst.frc.team2144.robot.commands;
 
 import org.usfirst.frc.team2144.robot.Constants;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 /**
  *
  */
@@ -30,6 +32,12 @@ public class IntakeDrive extends CommandBase {
 			intake.setServo(Constants.intakeServoFire);
 		} else {
 			intake.setServo(Constants.intakeServoResting);
+		}
+		
+		if (intake.hasBall()) {
+			SmartDashboard.putBoolean("I have a ball", true);
+		} else {
+			SmartDashboard.putBoolean("I have a ball", false);
 		}
 	}
 
