@@ -6,6 +6,9 @@ public class Constants {
 	public static final double actUp = 0.08;
 	public static final double actDown = 0.64;
 	public static final double actHalfDown = 0.40;
+	
+	public static final double actUpAngle = 53;
+	public static final double actDownAngle = -20;
 
 	// intake motor speeds and servo pos
 	public static final double intakeIntakeSpeed = -0.3;
@@ -29,5 +32,6 @@ public class Constants {
 
 	public static final double mastPitchUp = 200;
 	public static final double mastPitchDown = 0;
+	public static final double mastPitchDelay = 1.0; // time to wait (seconds) before moving mast
 
 }

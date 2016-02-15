@@ -19,7 +19,7 @@ public class MastPitchUp extends CommandBase {
 	// Called just before this Command runs the first time
 	protected void initialize() {
 		intakePitch.setSetpoint(Constants.actHalfDown);
-		Timer.delay(1.5);
+		Timer.delay(Constants.mastPitchDelay);
 		mastPitch.setSetpoint(Constants.mastPitchUp);
 	}
 
