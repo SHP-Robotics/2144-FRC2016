@@ -78,7 +78,7 @@ public class OI {
 
 	public double getIntakePitchPitch() {
 		double i = (right.getThrottle() + 1) / 2;
-		i = (i * 0.555) + 0.065;
+		i = (i * (Constants.actDown - Constants.actUp)) + Constants.actUp;
 		return i;
 	}
 
