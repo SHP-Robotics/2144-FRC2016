@@ -5,6 +5,7 @@ import org.usfirst.frc.team2144.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team2144.robot.subsystems.Intake;
 import org.usfirst.frc.team2144.robot.subsystems.IntakePitch;
 import org.usfirst.frc.team2144.robot.subsystems.MastPitch;
+import org.usfirst.frc.team2144.robot.subsystems.MastWinch;
 import org.usfirst.frc.team2144.robot.subsystems.Winch;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -27,6 +28,7 @@ public abstract class CommandBase extends Command {
 	public static IntakePitch intakePitch = new IntakePitch();
 	public static Winch winch = new Winch();
 	public static MastPitch mastPitch = new MastPitch();
+	public static MastWinch mastWinch = new MastWinch();
 
 	public static void init() {
 		// This MUST be here. If the OI creates Commands (which it very likely
@@ -37,9 +39,9 @@ public abstract class CommandBase extends Command {
 		oi = new OI();
 
 		// Show what command your subsystem is running on the SmartDashboard
-		SmartDashboard.putData(drivetrain);
-		SmartDashboard.putData(intake);
-		SmartDashboard.putData(intakePitch);
+		// SmartDashboard.putData(drivetrain);
+		// SmartDashboard.putData(intake);
+		// SmartDashboard.putData(intakePitch);
 	}
 
 	public CommandBase(String name) {
