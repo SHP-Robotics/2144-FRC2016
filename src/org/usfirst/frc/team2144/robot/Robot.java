@@ -28,7 +28,7 @@ public class Robot extends IterativeRobot {
 	// public static final IntakePitch intakePitch = new IntakePitch();
 	public static OI oi;
 
-	Command autonomousCommand;
+	Command autonomousCommand, testCommand;
 	SendableChooser autoChooser;
 
 	/**
@@ -41,6 +41,8 @@ public class Robot extends IterativeRobot {
 		autoChooser = new SendableChooser();
 		autoChooser.addDefault("Low Bar Auto", new LowBarAuto());
 		autoChooser.addObject("No Auto", null);
+
+		testCommand = new CalibrateThings();
 
 		SmartDashboard.putData("Auto Chooser", autoChooser);
 
@@ -76,7 +78,8 @@ public class Robot extends IterativeRobot {
 	}
 
 	public void disabledInit() {
-
+		if (testCommand != null)
+			testCommand.cancel();
 	}
 
 	public void disabledPeriodic() {
@@ -86,5 +89,7 @@ public class Robot extends IterativeRobot {
 
 	public void testPeriodic() {
 		LiveWindow.run();
+		if (testCommand != null)
+			testCommand.start();
 	}
 }

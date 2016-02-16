@@ -30,8 +30,15 @@ public class OI {
 		return left.getX();
 	}
 
+	/**
+	 * returns non-inverted Y
+	 */
 	public double getStickY() {
 		return left.getY();
+	}
+
+	public double getStick2X() {
+		return right.getX();
 	}
 
 	public double getStick2Y() {
