@@ -1,11 +1,9 @@
 
 package org.usfirst.frc.team2144.robot;
 
+import org.usfirst.frc.team2144.robot.commands.CalibrateEverything;
 import org.usfirst.frc.team2144.robot.commands.CommandBase;
 import org.usfirst.frc.team2144.robot.commands.LowBarAuto;
-import org.usfirst.frc.team2144.robot.subsystems.Drivetrain;
-import org.usfirst.frc.team2144.robot.subsystems.Intake;
-import org.usfirst.frc.team2144.robot.subsystems.IntakePitch;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -28,7 +26,8 @@ public class Robot extends IterativeRobot {
 	// public static final IntakePitch intakePitch = new IntakePitch();
 	public static OI oi;
 
-	Command autonomousCommand, testCommand;
+	Command autonomousCommand;
+	CalibrateEverything testCommand;
 	SendableChooser autoChooser;
 
 	/**
@@ -42,7 +41,7 @@ public class Robot extends IterativeRobot {
 		autoChooser.addDefault("Low Bar Auto", new LowBarAuto());
 		autoChooser.addObject("No Auto", null);
 
-		// testCommand = new CalibrateEverything();
+		testCommand = new CalibrateEverything();
 
 		SmartDashboard.putData("Auto Chooser", autoChooser);
 
