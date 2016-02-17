@@ -26,6 +26,8 @@ public class RobotMap {
 
 	public static final int mastWinchPort = 7;
 
+	public static final int mastHookPort = 8;
+
 	// DIO
 	public static final int leftEncPortA = 0; // left drivetrain enc A
 	public static final int leftEncPortB = 1; // left drivetrain enc B
@@ -34,13 +36,15 @@ public class RobotMap {
 
 	public static final int mastPitchEncA = 4; // mast pitch enc A
 	public static final int mastPitchEncB = 5; // mast pitch enc B
-	
+
+	public static final int mastHookEncA = 6;
+	public static final int mastHookEncB = 7;
+
 	public static final int mastWinchLimit = 8;
 
 	public static final int intakeLimitPort = 9; // intake limit switch
 
 	// AIN
 	public static final int intakePitchPotPort = 0; // intake actuator pot
-	
 
 }
