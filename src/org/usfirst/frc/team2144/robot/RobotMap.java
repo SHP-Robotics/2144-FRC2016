@@ -34,11 +34,11 @@ public class RobotMap {
 	public static final int rightEncPortA = 2; // right drivetrain enc A
 	public static final int rightEncPortB = 3; // right drivetrain enc B
 
-	public static final int mastPitchEncA = 4; // mast pitch enc A
-	public static final int mastPitchEncB = 5; // mast pitch enc B
+	public static final int mastPitchEncA = 6; // mast pitch enc A
+	public static final int mastPitchEncB = 7; // mast pitch enc B
 
-	public static final int mastHookEncA = 6;
-	public static final int mastHookEncB = 7;
+	public static final int mastHookEncA = 4;
+	public static final int mastHookEncB = 5;
 
 	public static final int mastWinchLimit = 8;
 
