@@ -11,13 +11,16 @@ public class CalibrateEverything extends CommandBase {
 		// Use requires() here to declare subsystem dependencies
 		requires(drivetrain);
 		requires(intakePitch);
-		// requires(mastPitch);
+		requires(mastPitch);
+		requires(mastWinch);
+		requires(mastHook);
 	}
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
 		drivetrain.reset_encoders();
-		// mastPitch.reset_encoder();
+		mastPitch.reset_encoder();
+		mastHook.reset_encoder();
 	}
 
 	// Called repeatedly when this Command is scheduled to run
@@ -29,7 +32,8 @@ public class CalibrateEverything extends CommandBase {
 		SmartDashboard.putNumber("potV", intakePitch.pot.get());
 		SmartDashboard.putNumber("LDT enc", drivetrain.leftEnc.get());
 		SmartDashboard.putNumber("RDT enc", drivetrain.rightEnc.get());
-		// SmartDashboard.putNumber("mastPitchV", mastPitch.get_encoder());
+		SmartDashboard.putNumber("mastPitchV", mastPitch.get_encoder());
+		SmartDashboard.putNumber("mastHookV", mastHook.get_encoder());
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

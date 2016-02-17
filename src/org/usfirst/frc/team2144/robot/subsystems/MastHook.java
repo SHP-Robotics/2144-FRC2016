@@ -19,6 +19,18 @@ public class MastHook extends Subsystem {
 		encoder = new Encoder(RobotMap.mastHookEncA, RobotMap.mastHookEncB);
 	}
 
+	public void drive(double foo) {
+		talon.set(foo);
+	}
+
+	public int get_encoder() {
+		return encoder.get();
+	}
+
+	public void reset_encoder() {
+		encoder.reset();
+	}
+
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
 

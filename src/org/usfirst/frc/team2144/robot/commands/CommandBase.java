@@ -4,12 +4,12 @@ import org.usfirst.frc.team2144.robot.OI;
 import org.usfirst.frc.team2144.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team2144.robot.subsystems.Intake;
 import org.usfirst.frc.team2144.robot.subsystems.IntakePitch;
+import org.usfirst.frc.team2144.robot.subsystems.MastHook;
 import org.usfirst.frc.team2144.robot.subsystems.MastPitch;
 import org.usfirst.frc.team2144.robot.subsystems.MastWinch;
 import org.usfirst.frc.team2144.robot.subsystems.Winch;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * The base for all commands. All atomic commands should subclass CommandBase.
@@ -29,6 +29,7 @@ public abstract class CommandBase extends Command {
 	public static Winch winch = new Winch();
 	public static MastPitch mastPitch = new MastPitch();
 	public static MastWinch mastWinch = new MastWinch();
+	public static MastHook mastHook = new MastHook();
 
 	public static void init() {
 		// This MUST be here. If the OI creates Commands (which it very likely
