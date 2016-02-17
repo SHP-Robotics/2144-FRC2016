@@ -3,9 +3,9 @@ package org.usfirst.frc.team2144.robot;
 public class Constants {
 
 	// linear actuator up/down
-	public static final double actUp = 0.08;
-	public static final double actDown = 0.64;
-	public static final double actHalfDown = 0.40;
+	public static final double actUp = 0.40;
+	public static final double actDown = 0.90;
+	public static final double actHalfDown = actDown - 0.15;
 	
 	public static final double actUpAngle = 53;
 	public static final double actDownAngle = -20;

@@ -42,7 +42,7 @@ public class Robot extends IterativeRobot {
 		autoChooser.addDefault("Low Bar Auto", new LowBarAuto());
 		autoChooser.addObject("No Auto", null);
 
-		testCommand = new CalibrateThings();
+		// testCommand = new CalibrateEverything();
 
 		SmartDashboard.putData("Auto Chooser", autoChooser);
 
