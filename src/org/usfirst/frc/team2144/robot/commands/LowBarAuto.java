@@ -1,5 +1,7 @@
 package org.usfirst.frc.team2144.robot.commands;
 
+import org.usfirst.frc.team2144.robot.Constants;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
@@ -25,14 +27,14 @@ public class LowBarAuto extends CommandGroup {
 		// a CommandGroup containing them would require both the chassis and the
 		// arm.
 		
-		// IntakePitchUp
+		addParallel(new AutoIntakeDrive(Constants.actUp + 0.10)); // intake up
 		addSequential(new ResetDrivetrainEncoders());
 		addSequential(new AutoDrive(0.6, 0.6, 1000, 1000)); // drive up to low bar
-		// IntakePitchDown
+		addParallel(new AutoIntakeDrive(Constants.actDown)); // intake down
 		addSequential(new ResetDrivetrainEncoders());
-		addSequential(new AutoDrive(0.4, 0.4, 500, 500));
-		// IntakePitchUp
+		addSequential(new AutoDrive(0.4, 0.4, 500, 500)); // drive through low bar
+		addParallel(new AutoIntakeDrive(Constants.actUp + 0.10)); // intake up
 		addSequential(new ResetDrivetrainEncoders());
-		addSequential(new AutoDrive(0.6, 0.6, 500, 500));
+		addSequential(new AutoDrive(0.6, 0.6, 500, 500)); // drive towards castle
 	}
 }

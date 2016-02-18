@@ -74,9 +74,9 @@ public class OI {
 	}
 
 	public double getActOverride() {
-		if (left.getRawButton(11)) {
+		if (left.getRawButton(ControlMap.actUpButton)) {
 			return -0.5;
-		} else if (left.getRawButton(10)) {
+		} else if (left.getRawButton(ControlMap.actDownButton)) {
 			return 0.5;
 		} else {
 			return 0;
