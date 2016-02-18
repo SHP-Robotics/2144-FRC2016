@@ -22,7 +22,7 @@ public class Constants {
 	public static final double intakeI = 0;
 	public static final double intakeD = 0;
 	
-	public static final double winchSpeed = -1.0;
+	public static final double winchSpeed = -0.95;
 
 	// mast pitch PID values
 	public static final double mastPitchP = 3;
