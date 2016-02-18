@@ -7,6 +7,7 @@ import org.usfirst.frc.team2144.robot.subsystems.IntakePitch;
 import org.usfirst.frc.team2144.robot.subsystems.MastHook;
 import org.usfirst.frc.team2144.robot.subsystems.MastPitch;
 import org.usfirst.frc.team2144.robot.subsystems.MastWinch;
+import org.usfirst.frc.team2144.robot.subsystems.Sensors;
 import org.usfirst.frc.team2144.robot.subsystems.Winch;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -30,6 +31,7 @@ public abstract class CommandBase extends Command {
 	public static MastPitch mastPitch = new MastPitch();
 	public static MastWinch mastWinch = new MastWinch();
 	public static MastHook mastHook = new MastHook();
+	public static Sensors sensors = new Sensors();
 
 	public static void init() {
 		// This MUST be here. If the OI creates Commands (which it very likely
