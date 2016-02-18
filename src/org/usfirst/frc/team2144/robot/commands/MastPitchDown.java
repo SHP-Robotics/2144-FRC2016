@@ -14,6 +14,7 @@ public class MastPitchDown extends CommandBase {
 		// Use requires() here to declare subsystem dependencies
 		requires(mastPitch);
 		requires(intakePitch);
+		setTimeout(4);
 	}
 
 	// Called just before this Command runs the first time

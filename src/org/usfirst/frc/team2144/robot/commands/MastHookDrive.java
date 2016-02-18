@@ -3,20 +3,21 @@ package org.usfirst.frc.team2144.robot.commands;
 /**
  *
  */
-public class MastWinchDrive extends CommandBase {
+public class MastHookDrive extends CommandBase {
 
-	public MastWinchDrive() {
+	public MastHookDrive() {
 		// Use requires() here to declare subsystem dependencies
-		requires(mastWinch);
+		requires(mastHook);
 	}
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
-		mastWinch.setMotor(Math.toDegrees(Math.cos(oi.getStick2POV())));
+		mastHook.enable();
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
+		mastHook.setSetpointRelative(Math.toDegrees(Math.sin(oi.getStick2POV())));
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

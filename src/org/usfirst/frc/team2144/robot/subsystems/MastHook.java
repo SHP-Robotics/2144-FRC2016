@@ -1,21 +1,24 @@
 package org.usfirst.frc.team2144.robot.subsystems;
 
+import org.usfirst.frc.team2144.robot.Constants;
 import org.usfirst.frc.team2144.robot.RobotMap;
+import org.usfirst.frc.team2144.robot.commands.MastHookDrive;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Talon;
-import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.command.PIDSubsystem;
 
 /**
  *
  */
-public class MastHook extends Subsystem {
+public class MastHook extends PIDSubsystem {
 
 	Talon talon;
 	Encoder encoder;
 
 	public MastHook() {
-		talon = new Talon(RobotMap.mastHookPort);
+		super(Constants.mastHookP, Constants.mastHookI, Constants.mastHookD);
+		talon = new Talon(RobotMap.mastHookPort); 
 		encoder = new Encoder(RobotMap.mastHookEncA, RobotMap.mastHookEncB);
 	}
 
@@ -36,6 +39,14 @@ public class MastHook extends Subsystem {
 
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
-		// setDefaultCommand(new MySpecialCommand());
+		setDefaultCommand(new MastHookDrive());
+	}
+
+	protected double returnPIDInput() {
+		return encoder.get();
+	}
+
+	protected void usePIDOutput(double output) {
+		talon.set(output);
 	}
 }
