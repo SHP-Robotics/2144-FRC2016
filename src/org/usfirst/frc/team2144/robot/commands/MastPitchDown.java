@@ -30,7 +30,7 @@ public class MastPitchDown extends CommandBase {
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		return mastPitch.get_encoder() <= Constants.mastPitchDown;
+		return mastPitch.get_encoder() >= Constants.mastPitchDown - 2;
 	}
 
 	// Called once after isFinished returns true

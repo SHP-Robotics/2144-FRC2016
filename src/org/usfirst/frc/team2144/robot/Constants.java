@@ -30,8 +30,8 @@ public class Constants {
 	public static final double mastPitchD = 0;
 	public static final double mastPitchPIDTolerance = 5;
 
-	public static final double mastPitchUp = 200;
-	public static final double mastPitchDown = 0;
+	public static final double mastPitchUp = 0;
+	public static final double mastPitchDown = 66;
 	public static final double mastPitchDelay = 1.0; // time to wait (seconds)
 														// before moving mast
 

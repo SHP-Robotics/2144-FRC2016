@@ -35,6 +35,10 @@ public class Sensors extends Subsystem {
 		SmartDashboard.putNumber("navX Temp", navx.getTempC());
 	}
 	
+	public double getYaw() {
+		return navx.getYaw();
+	}
+	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         setDefaultCommand(new SensorMonitor());
