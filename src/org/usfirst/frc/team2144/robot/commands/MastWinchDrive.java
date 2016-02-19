@@ -12,7 +12,7 @@ public class MastWinchDrive extends CommandBase {
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
-		mastWinch.setMotor(Math.toDegrees(Math.cos(oi.getStick2POV())));
+		mastWinch.setMotor(Math.toDegrees(Math.cos(oi.getStick2POV())) * -1);
 	}
 
 	// Called repeatedly when this Command is scheduled to run
