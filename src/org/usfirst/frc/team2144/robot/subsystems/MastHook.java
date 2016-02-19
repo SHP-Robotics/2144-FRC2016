@@ -7,6 +7,7 @@ import org.usfirst.frc.team2144.robot.commands.MastHookDrive;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
+import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 /**
  *
@@ -20,6 +21,8 @@ public class MastHook extends PIDSubsystem {
 		super(Constants.mastHookP, Constants.mastHookI, Constants.mastHookD);
 		talon = new Talon(RobotMap.mastHookPort); 
 		encoder = new Encoder(RobotMap.mastHookEncA, RobotMap.mastHookEncB);
+		LiveWindow.addActuator("MastHook", "motor", talon);
+		LiveWindow.addSensor("MastHook", "encoder", encoder);
 	}
 
 	public void drive(double foo) {

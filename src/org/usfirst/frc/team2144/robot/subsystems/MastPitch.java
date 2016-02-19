@@ -6,6 +6,7 @@ import org.usfirst.frc.team2144.robot.RobotMap;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
+import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 /**
  *
@@ -24,6 +25,8 @@ public class MastPitch extends PIDSubsystem {
 		// enable() - Enables the PID controller.
 		talon = new Talon(RobotMap.mastPitchPort);
 		encoder = new Encoder(RobotMap.mastPitchEncA, RobotMap.mastPitchEncB);
+		LiveWindow.addActuator("MastPitch", "motor", talon);
+		LiveWindow.addSensor("MastPitch", "encoder", encoder);
 	}
 	
 	public void reset_encoder() {

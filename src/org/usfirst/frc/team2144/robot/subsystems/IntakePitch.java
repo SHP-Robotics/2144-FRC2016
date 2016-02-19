@@ -7,6 +7,7 @@ import org.usfirst.frc.team2144.robot.commands.IntakePitchDrive;
 import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
+import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 /**
  *
@@ -25,6 +26,8 @@ public class IntakePitch extends PIDSubsystem {
 		// enable() - Enables the PID controller.
 		pot = new AnalogPotentiometer(RobotMap.intakePitchPotPort);
 		talon = new Talon(RobotMap.intakePitchPort);
+		LiveWindow.addActuator("IntakePitch", "motor", talon);
+		LiveWindow.addSensor("IntakePitch", "pot", pot);
 	}
 
 	public void initDefaultCommand() {

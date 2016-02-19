@@ -6,6 +6,7 @@ import org.usfirst.frc.team2144.robot.commands.MastWinchDrive;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 /**
  *
@@ -18,6 +19,7 @@ public class MastWinch extends Subsystem {
 	public MastWinch() {
 		talon = new Talon(RobotMap.mastWinchPort);
 		limit = new DigitalInput(RobotMap.mastWinchLimit);
+		LiveWindow.addActuator("MastWinch", "motor", talon);
 	}
 
 	// Put methods for controlling this subsystem
