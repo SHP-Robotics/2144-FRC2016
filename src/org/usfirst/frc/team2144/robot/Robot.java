@@ -88,7 +88,5 @@ public class Robot extends IterativeRobot {
 
 	public void testPeriodic() {
 		LiveWindow.run();
-		if (testCommand != null)
-			testCommand.start();
 	}
 }
