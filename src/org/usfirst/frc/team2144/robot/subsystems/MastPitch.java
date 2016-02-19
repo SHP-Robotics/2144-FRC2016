@@ -27,6 +27,7 @@ public class MastPitch extends PIDSubsystem {
 		encoder = new Encoder(RobotMap.mastPitchEncA, RobotMap.mastPitchEncB);
 		LiveWindow.addActuator("MastPitch", "motor", talon);
 		LiveWindow.addSensor("MastPitch", "encoder", encoder);
+		LiveWindow.addActuator("MastPitch", "pid", getPIDController());
 	}
 	
 	public void reset_encoder() {

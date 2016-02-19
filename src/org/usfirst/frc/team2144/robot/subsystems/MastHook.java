@@ -23,6 +23,7 @@ public class MastHook extends PIDSubsystem {
 		encoder = new Encoder(RobotMap.mastHookEncA, RobotMap.mastHookEncB);
 		LiveWindow.addActuator("MastHook", "motor", talon);
 		LiveWindow.addSensor("MastHook", "encoder", encoder);
+		LiveWindow.addActuator("MastHook", "pid", getPIDController());
 	}
 
 	public void drive(double foo) {

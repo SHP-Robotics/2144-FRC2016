@@ -28,6 +28,7 @@ public class IntakePitch extends PIDSubsystem {
 		talon = new Talon(RobotMap.intakePitchPort);
 		LiveWindow.addActuator("IntakePitch", "motor", talon);
 		LiveWindow.addSensor("IntakePitch", "pot", pot);
+		LiveWindow.addActuator("IntakePitch", "pid", getPIDController());
 	}
 
 	public void initDefaultCommand() {
