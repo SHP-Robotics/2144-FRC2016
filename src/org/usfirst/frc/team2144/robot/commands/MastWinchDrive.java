@@ -14,7 +14,7 @@ public class MastWinchDrive extends CommandBase {
 	protected void initialize() {
 		if (oi.getStick2POV() == 0) {
 			mastWinch.setMotor(-0.5);
-		} else if (oi.getStick2POV() == 90) {
+		} else if (oi.getStick2POV() == 180) {
 			mastWinch.setMotor(0.5);
 		}
 	}

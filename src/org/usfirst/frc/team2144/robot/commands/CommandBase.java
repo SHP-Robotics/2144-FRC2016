@@ -11,6 +11,7 @@ import org.usfirst.frc.team2144.robot.subsystems.Sensors;
 import org.usfirst.frc.team2144.robot.subsystems.Winch;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 /**
  * The base for all commands. All atomic commands should subclass CommandBase.
@@ -45,6 +46,7 @@ public abstract class CommandBase extends Command {
 		// SmartDashboard.putData(drivetrain);
 		// SmartDashboard.putData(intake);
 		// SmartDashboard.putData(intakePitch);
+		mastPitch.reset_encoder();
 	}
 
 	public CommandBase(String name) {

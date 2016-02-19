@@ -12,12 +12,20 @@ public class MastHookDrive extends CommandBase {
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
+		mastHook.reset_encoder();
+		mastHook.setSetpoint(0);
 		mastHook.enable();
+		
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		// mastHook.setSetpointRelative(Math.toDegrees(Math.sin(oi.getStick2POV())));
+		if (oi.getStick2POV() == 90) {
+			mastHook.setSetpointRelative(5);
+		} else if (oi.getStick2POV() == 270) {
+			mastHook.setSetpointRelative(-5);
+		}
+		
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
