@@ -2,6 +2,7 @@ package org.usfirst.frc.team2144.robot.subsystems;
 
 import org.usfirst.frc.team2144.robot.Constants;
 import org.usfirst.frc.team2144.robot.RobotMap;
+import org.usfirst.frc.team2144.robot.commands.MastPitchDrive;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Talon;
@@ -40,7 +41,7 @@ public class MastPitch extends PIDSubsystem {
 
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
-		// setDefaultCommand(new MySpecialCommand());
+		setDefaultCommand(new MastPitchDrive());
 	}
 
 	protected double returnPIDInput() {

@@ -1,8 +1,6 @@
 package org.usfirst.frc.team2144.robot;
 
 import org.usfirst.frc.team2144.robot.commands.IntakePitchOverride;
-import org.usfirst.frc.team2144.robot.commands.MastPitchDown;
-import org.usfirst.frc.team2144.robot.commands.MastPitchUp;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -16,13 +14,9 @@ public class OI {
 	Joystick left = new Joystick(0);
 	Joystick right = new Joystick(1);
 
-	JoystickButton mastPitchUpButton = new JoystickButton(left, ControlMap.mastPitchUpButton);
-	JoystickButton mastPitchDownButton = new JoystickButton(left, ControlMap.mastPitchDownButton);
 	JoystickButton actEmergOverrideButton = new JoystickButton(right, ControlMap.actEmergOverrideButton);
 
 	public OI() {
-		mastPitchUpButton.whenPressed(new MastPitchUp());
-		mastPitchDownButton.whenPressed(new MastPitchDown());
 		actEmergOverrideButton.whenPressed(new IntakePitchOverride());
 	}
 
@@ -71,6 +65,14 @@ public class OI {
 
 	public boolean getWinch() {
 		return left.getRawButton(ControlMap.winchButton);
+	}
+
+	public boolean getMastPitchUp() {
+		return left.getRawButton(ControlMap.mastPitchUpButton);
+	}
+
+	public boolean getMastPitchDown() {
+		return left.getRawButton(ControlMap.mastPitchDownButton);
 	}
 
 	public double getActOverride() {

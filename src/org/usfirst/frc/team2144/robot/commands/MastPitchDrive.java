@@ -3,40 +3,41 @@ package org.usfirst.frc.team2144.robot.commands;
 import org.usfirst.frc.team2144.robot.Constants;
 
 import edu.wpi.first.wpilibj.Timer;
-import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class MastPitchUp extends CommandBase {
+public class MastPitchDrive extends CommandBase {
 
-	public MastPitchUp() {
+	public MastPitchDrive() {
 		// Use requires() here to declare subsystem dependencies
 		requires(mastPitch);
-		requires(intakePitch);
-		setTimeout(4);
 	}
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
 		mastPitch.enable();
-		intakePitch.setSetpoint(Constants.actHalfDown);
-		Timer.delay(Constants.mastPitchDelay);
-		mastPitch.setSetpoint(Constants.mastPitchUp);
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
+		if (oi.getMastPitchUp()) {
+			mastPitch.enable();
+			mastPitch.setSetpoint(Constants.mastPitchUp);
+		} else if (oi.getMastPitchDown()) {
+			mastPitch.setSetpoint(Constants.mastPitchDown);
+			Timer.delay(0.1);
+			mastPitch.disable();
+		}
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		return mastPitch.get_encoder() <= Constants.mastPitchUp + 2;
+		return false;
 	}
 
 	// Called once after isFinished returns true
 	protected void end() {
-		intakePitch.setSetpoint(Constants.actUp);
 	}
 
 	// Called when another command which requires one or more of the same
