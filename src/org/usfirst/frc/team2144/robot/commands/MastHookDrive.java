@@ -1,5 +1,7 @@
 package org.usfirst.frc.team2144.robot.commands;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 /**
  *
  */
@@ -21,11 +23,11 @@ public class MastHookDrive extends CommandBase {
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
 		if (oi.getStick2POV() == 90) {
-			mastHook.setSetpointRelative(0.05);
+			mastHook.setSetpoint(500);
 		} else if (oi.getStick2POV() == 270) {
-			mastHook.setSetpointRelative(-0.05);
+			mastHook.setSetpoint(0);
 		}
-		
+		SmartDashboard.putNumber("hookPt", mastHook.getSetpoint());
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

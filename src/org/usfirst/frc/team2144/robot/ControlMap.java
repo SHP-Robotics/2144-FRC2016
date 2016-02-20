@@ -17,7 +17,8 @@ public class ControlMap {
 	public static final int fireButton = 1; // press to move servo to fire pos
 	public static final int intakePitchButton = 2; // hold to move intake to intake position
 	public static final int actEmergOverrideButton = 7;
-	
+	public static final int mastWinchUpButton = 6;
+	public static final int mastWinchDownButton = 4;
 	
 	
 	

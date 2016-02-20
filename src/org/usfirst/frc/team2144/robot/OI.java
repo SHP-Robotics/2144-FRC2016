@@ -74,6 +74,14 @@ public class OI {
 	public boolean getMastPitchDown() {
 		return left.getRawButton(ControlMap.mastPitchDownButton);
 	}
+	
+	public boolean getMastWinchUp() {
+		return right.getRawButton(ControlMap.mastWinchUpButton);
+	}
+	
+	public boolean getMastWinchDown() {
+		return right.getRawButton(ControlMap.mastWinchDownButton);
+	}
 
 	public double getActOverride() {
 		if (left.getRawButton(ControlMap.actUpButton)) {

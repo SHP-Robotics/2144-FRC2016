@@ -21,7 +21,7 @@ public class MastHook extends PIDSubsystem {
 		super(Constants.mastHookP, Constants.mastHookI, Constants.mastHookD);
 		talon = new Talon(RobotMap.mastHookPort); 
 		encoder = new Encoder(RobotMap.mastHookEncA, RobotMap.mastHookEncB);
-		setAbsoluteTolerance(5);
+		setAbsoluteTolerance(10);
 		LiveWindow.addActuator("MastHook", "motor", talon);
 		LiveWindow.addSensor("MastHook", "encoder", encoder);
 		LiveWindow.addActuator("MastHook", "pid", getPIDController());

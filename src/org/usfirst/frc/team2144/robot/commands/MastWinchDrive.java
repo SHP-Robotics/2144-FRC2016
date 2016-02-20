@@ -12,17 +12,18 @@ public class MastWinchDrive extends CommandBase {
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
-		if (oi.getStick2POV() == 0) {
-			mastWinch.setMotor(-1);
-		} else if (oi.getStick2POV() == 180) {
-			mastWinch.setMotor(1);
-		} else {
-			mastWinch.setMotor(0);
-		}
+		
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
+		if (oi.getMastWinchUp()) {
+			mastWinch.setMotor(-1);
+		} else if (oi.getMastWinchDown()) {
+			mastWinch.setMotor(1);
+		} else {
+			mastWinch.setMotor(0);
+		}
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
