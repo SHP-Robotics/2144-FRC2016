@@ -25,7 +25,7 @@ public class Constants {
 	public static final double winchSpeed = -0.95;
 
 	// mast pitch PID values
-	public static final double mastPitchP = 3;
+	public static final double mastPitchP = 0.015;
 	public static final double mastPitchI = 0;
 	public static final double mastPitchD = 0;
 	public static final double mastPitchPIDTolerance = 5;
