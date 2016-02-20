@@ -46,7 +46,7 @@ public class OI {
 	}
 
 	public int getStick2POV() {
-		return right.getPOV(0);
+		return right.getPOV();
 	}
 
 	public boolean getPrecise() {
