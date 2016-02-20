@@ -22,10 +22,12 @@ public class MastHookDrive extends CommandBase {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		if (oi.getStick2POV() == 90) {
-			mastHook.setSetpoint(500);
-		} else if (oi.getStick2POV() == 270) {
-			mastHook.setSetpoint(0);
+		if (oi.getMastHookUp()) {
+			mastHook.drive(1);;
+		} else if (oi.getMastHookDown()) {
+			mastHook.drive(-0.5);;
+		} else {
+			mastHook.drive(0);
 		}
 		SmartDashboard.putNumber("hookPt", mastHook.getSetpoint());
 	}

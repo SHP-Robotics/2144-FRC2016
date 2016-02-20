@@ -19,6 +19,8 @@ public class ControlMap {
 	public static final int actEmergOverrideButton = 7;
 	public static final int mastWinchUpButton = 6;
 	public static final int mastWinchDownButton = 4;
+	public static final int mastHookUpButton = 5;
+	public static final int mastHookDownButton = 3;
 	
 	
 	
