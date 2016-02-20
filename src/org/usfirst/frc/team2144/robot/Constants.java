@@ -33,7 +33,7 @@ public class Constants {
 
 	public static final double mastPitchUp = -126;
 	public static final double mastPitchDown = 0;
-	public static final double mastPitchDelay = 1.0; // time to wait (seconds)
+	public static final double mastPitchDelay = 0.5; // time to wait (seconds)
 														// before moving mast
 
 	// mast hook PID
