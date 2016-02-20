@@ -18,8 +18,8 @@ public class Constants {
 	public static final double intakeServoResting = 0.9;
 
 	// intake PID values
-	public static final double intakeP = 9;
-	public static final double intakeI = 0.01;
+	public static final double intakeP = 3;
+	public static final double intakeI = 0;
 	public static final double intakeD = 0;
 	
 	public static final double winchSpeed = -0.95;
@@ -31,8 +31,8 @@ public class Constants {
 	public static final double mastPitchPIDTolerance = 5;
 
 
-	public static final double mastPitchUp = 0;
-	public static final double mastPitchDown = 144;
+	public static final double mastPitchUp = -126;
+	public static final double mastPitchDown = 0;
 	public static final double mastPitchDelay = 1.0; // time to wait (seconds)
 														// before moving mast
 
