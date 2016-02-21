@@ -42,5 +42,6 @@ public class Constants {
 
 	// auto vars
 	public static final double autoGyroDriveP = 0.03;
+	public static final double turningTolerance = 3;
 
 }
