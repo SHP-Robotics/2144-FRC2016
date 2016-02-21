@@ -1,7 +1,5 @@
 package org.usfirst.frc.team2144.robot;
 
-import edu.wpi.first.wpilibj.GenericHID;
-
 public class ControlMap {
 
 	// left stick

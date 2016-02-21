@@ -1,7 +1,5 @@
 package org.usfirst.frc.team2144.robot.commands;
 
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
 /**
  *
  */
