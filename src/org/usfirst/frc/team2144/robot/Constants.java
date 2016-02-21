@@ -3,8 +3,8 @@ package org.usfirst.frc.team2144.robot;
 public class Constants {
 
 	// linear actuator up/down
-	public static final double actUp = 0.40;
-	public static final double actDown = 0.90;
+	public static final double actUp = 0.08;
+	public static final double actDown = 0.59;
 	public static final double actHalfDown = actDown - 0.15;
 	
 	public static final double actUpAngle = 53;
@@ -18,7 +18,7 @@ public class Constants {
 	public static final double intakeServoResting = 0.9;
 
 	// intake PID values
-	public static final double intakeP = 3;
+	public static final double intakeP = 5;
 	public static final double intakeI = 0;
 	public static final double intakeD = 0;
 	

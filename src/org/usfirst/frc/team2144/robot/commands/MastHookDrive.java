@@ -14,9 +14,6 @@ public class MastHookDrive extends CommandBase {
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
-		mastHook.reset_encoder();
-		mastHook.setSetpoint(0);
-		mastHook.enable();
 		
 	}
 
@@ -25,11 +22,10 @@ public class MastHookDrive extends CommandBase {
 		if (oi.getMastHookUp()) {
 			mastHook.drive(1);;
 		} else if (oi.getMastHookDown()) {
-			mastHook.drive(-0.5);;
+			mastHook.drive(-1);;
 		} else {
 			mastHook.drive(0);
 		}
-		SmartDashboard.putNumber("hookPt", mastHook.getSetpoint());
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

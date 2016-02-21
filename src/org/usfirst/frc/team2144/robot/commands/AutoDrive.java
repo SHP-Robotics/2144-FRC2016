@@ -25,11 +25,12 @@ public class AutoDrive extends CommandBase {
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
-		drivetrain.tankDrive(false, leftSpeed, rightSpeed);
+		drivetrain.tankDrive(false, leftSpeed + 0.09, rightSpeed);
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
+		drivetrain.tankDrive(false, leftSpeed + 0.09, rightSpeed);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
