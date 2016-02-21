@@ -29,10 +29,10 @@ public class LowBarAuto extends CommandGroup {
 		
 		addParallel(new AutoIntakeDrive(Constants.actUp + 0.10)); // intake up
 		addSequential(new ResetDrivetrainEncoders());
-		addSequential(new AutoDrive(0.6, 0.6, 700, 700)); // drive up to low bar
+		addSequential(new AutoGyroDrive(0.6, 700)); // drive up to low bar
 		addParallel(new AutoIntakeDrive(Constants.actDown)); // intake down
 		addSequential(new ResetDrivetrainEncoders());
-		addSequential(new AutoDrive(0.6, 0.6, 2300, 2300)); // drive through low bar
+		addSequential(new AutoGyroDrive(0.6, 2300)); // drive through low bar
 		addParallel(new AutoIntakeDrive(Constants.actUp + 0.10)); // intake up
 //		addSequential(new ResetDrivetrainEncoders());
 //		addSequential(new AutoDrive(0.6, 0.6, 500, 500)); // drive towards castle

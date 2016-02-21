@@ -39,6 +39,10 @@ public class Sensors extends Subsystem {
 		SmartDashboard.putNumber("navX Temp", navx.getTempC());
 	}
 	
+	public void resetNavX() {
+		navx.reset();
+	}
+	
 	public double getYaw() {
 		return navx.getYaw();
 	}

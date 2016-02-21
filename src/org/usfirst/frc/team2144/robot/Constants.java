@@ -6,7 +6,7 @@ public class Constants {
 	public static final double actUp = 0.08;
 	public static final double actDown = 0.59;
 	public static final double actHalfDown = actDown - 0.15;
-	
+
 	public static final double actUpAngle = 53;
 	public static final double actDownAngle = -20;
 
@@ -21,7 +21,7 @@ public class Constants {
 	public static final double intakeP = 5;
 	public static final double intakeI = 0;
 	public static final double intakeD = 0;
-	
+
 	public static final double winchSpeed = -0.95;
 
 	// mast pitch PID values
@@ -29,7 +29,6 @@ public class Constants {
 	public static final double mastPitchI = 0;
 	public static final double mastPitchD = 0;
 	public static final double mastPitchPIDTolerance = 5;
-
 
 	public static final double mastPitchUp = -126;
 	public static final double mastPitchDown = 0;
@@ -41,5 +40,7 @@ public class Constants {
 	public static final double mastHookI = 0.001;
 	public static final double mastHookD = 0;
 
+	// auto vars
+	public static final double autoGyroDriveP = 0.03;
 
 }
