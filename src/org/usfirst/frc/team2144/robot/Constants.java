@@ -41,7 +41,7 @@ public class Constants {
 	public static final double mastHookD = 0;
 
 	// auto vars
-	public static final double autoGyroDriveP = 0.07;
+	public static final double autoGyroDriveP = 0.10;
 	public static final double turningTolerance = 3;
 
 }
