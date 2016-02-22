@@ -46,6 +46,7 @@ public abstract class CommandBase extends Command {
 		// SmartDashboard.putData(intake);
 		// SmartDashboard.putData(intakePitch);
 		mastPitch.reset_encoder();
+		sensors.init();
 	}
 
 	public CommandBase(String name) {

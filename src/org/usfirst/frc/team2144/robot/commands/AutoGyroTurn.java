@@ -21,19 +21,19 @@ public class AutoGyroTurn extends CommandBase {
 		// Use requires() here to declare subsystem dependencies
 		requires(drivetrain);
 		requires(sensors);
-		speed = spd;
+		speed = -spd;
 		angle = angl;
 	}
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
-		sensors.resetNavX();
-		drivetrain.arcadeDrive(false, 0, angle);
+		sensors.resetYaw();
+		drivetrain.arcadeDrive(false, 0, speed);
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		drivetrain.arcadeDrive(false, 0, angle);
+		drivetrain.arcadeDrive(false, 0, speed);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

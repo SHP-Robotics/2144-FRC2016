@@ -29,7 +29,7 @@ public class Drivetrain extends Subsystem {
 		rightEnc = new Encoder(RobotMap.rightEncPortA, RobotMap.rightEncPortB);
 	}
 
-	public void arcadeDrive(boolean isPrecise, double stickX, double stickY) {
+	public void arcadeDrive(boolean isPrecise, double stickY, double stickX) {
 		if (!isPrecise)
 			robit.arcadeDrive(stickY, stickX);
 		else

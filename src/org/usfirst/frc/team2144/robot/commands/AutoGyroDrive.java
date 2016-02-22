@@ -26,13 +26,13 @@ public class AutoGyroDrive extends CommandBase {
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
-		sensors.resetNavX();
+		sensors.resetYaw();
 		drivetrain.arcadeDrive(false, speed, 0);
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		double error = -sensors.getYaw() * kP;
+		double error = sensors.getYaw() * kP;
 		if (error > 1) {
 			error = 1;
 		} else if (error < -1) {

@@ -34,6 +34,10 @@ public class Sensors extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	
+	public void init() {
+		
+	}
+	
 	public void updateTemp() {
 		SmartDashboard.putNumber("PDP temp", pdp.getTemperature());
 		SmartDashboard.putNumber("navX Temp", navx.getTempC());
@@ -41,6 +45,10 @@ public class Sensors extends Subsystem {
 	
 	public void resetNavX() {
 		navx.reset();
+	}
+	
+	public void resetYaw() {
+		navx.zeroYaw();
 	}
 	
 	public double getYaw() {
