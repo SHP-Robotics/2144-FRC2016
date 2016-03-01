@@ -35,7 +35,7 @@ public class Sensors extends Subsystem {
     // here. Call these from Commands.
 	
 	public void init() {
-		
+		pdp.clearStickyFaults();
 	}
 	
 	public void updateTemp() {
