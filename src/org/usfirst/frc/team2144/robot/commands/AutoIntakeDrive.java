@@ -7,7 +7,8 @@ import org.usfirst.frc.team2144.robot.Constants;
  */
 public class AutoIntakeDrive extends CommandBase {
 
-	double pos;
+	double pos, spd;
+	boolean fire;
 
 	/**
 	 * When active, runs PID loop to move intakePitch to given position. Please
@@ -16,10 +17,13 @@ public class AutoIntakeDrive extends CommandBase {
 	 * @param position
 	 * @see org.usfirst.frc.team2144.robot.Constants
 	 */
-	public AutoIntakeDrive(double position) {
+	public AutoIntakeDrive(double position, double speed, boolean isFire) {
 		// Use requires() here to declare subsystem dependencies
 		requires(intakePitch);
+		requires(intake);
 		pos = position;
+		spd = speed;
+		fire = isFire;
 	}
 
 	// Called just before this Command runs the first time
@@ -30,6 +34,14 @@ public class AutoIntakeDrive extends CommandBase {
 		} else {
 			throw new IllegalArgumentException("Position is outside of possible range.");
 		}
+		
+		intake.set(spd);
+		if (fire) {
+			intake.setServo(Constants.intakeServoFire);
+		} else {
+			intake.setServo(Constants.intakeServoResting);
+		}
+		
 
 	}
 

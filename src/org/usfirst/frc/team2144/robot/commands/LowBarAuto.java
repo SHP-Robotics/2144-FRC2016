@@ -26,15 +26,19 @@ public class LowBarAuto extends CommandGroup {
 		// e.g. if Command1 requires chassis, and Command2 requires arm,
 		// a CommandGroup containing them would require both the chassis and the
 		// arm.
-		
-		addParallel(new AutoIntakeDrive(Constants.actUp + 0.10)); // intake up
+
+		addParallel(new AutoIntakeDrive(Constants.actUp + 0.10, Constants.intakeRestingSpeed, false)); // intake
+																										// up
 		addSequential(new ResetDrivetrainEncoders());
 		addSequential(new AutoGyroDrive(0.6, 700)); // drive up to low bar
-		addParallel(new AutoIntakeDrive(Constants.actDown)); // intake down
+		addParallel(new AutoIntakeDrive(Constants.actDown, Constants.intakeRestingSpeed, false)); // intake
+																									// down
 		addSequential(new ResetDrivetrainEncoders());
 		addSequential(new AutoGyroDrive(0.6, 2300)); // drive through low bar
-		addParallel(new AutoIntakeDrive(Constants.actUp + 0.10)); // intake up
-//		addSequential(new ResetDrivetrainEncoders());
-//		addSequential(new AutoDrive(0.6, 0.6, 500, 500)); // drive towards castle
+		addParallel(new AutoIntakeDrive(Constants.actUp + 0.10, Constants.intakeRestingSpeed, false)); // intake
+																										// up
+		// addSequential(new ResetDrivetrainEncoders());
+		// addSequential(new AutoDrive(0.6, 0.6, 500, 500)); // drive towards
+		// castle
 	}
 }
