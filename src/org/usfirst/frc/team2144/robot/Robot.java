@@ -3,7 +3,9 @@ package org.usfirst.frc.team2144.robot;
 
 import org.usfirst.frc.team2144.robot.commands.CalibrateEverything;
 import org.usfirst.frc.team2144.robot.commands.CommandBase;
+import org.usfirst.frc.team2144.robot.commands.HiCastleAuto;
 import org.usfirst.frc.team2144.robot.commands.LowBarAuto;
+import org.usfirst.frc.team2144.robot.commands.ReachDefAuto;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -39,6 +41,8 @@ public class Robot extends IterativeRobot {
 		// instantiate the command used for the autonomous period
 		autoChooser = new SendableChooser();
 		autoChooser.addDefault("Low Bar Auto", new LowBarAuto());
+		autoChooser.addObject("Reach Auto", new ReachDefAuto());
+		autoChooser.addObject("High Goal Auto", new HiCastleAuto());
 		autoChooser.addObject("No Auto", null);
 
 		testCommand = new CalibrateEverything();
