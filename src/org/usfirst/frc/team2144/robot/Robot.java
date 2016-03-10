@@ -1,6 +1,7 @@
 
 package org.usfirst.frc.team2144.robot;
 
+import org.usfirst.frc.team2144.robot.commands.BreachBAuto;
 import org.usfirst.frc.team2144.robot.commands.CalibrateEverything;
 import org.usfirst.frc.team2144.robot.commands.CommandBase;
 import org.usfirst.frc.team2144.robot.commands.HiCastleAuto;
@@ -43,6 +44,7 @@ public class Robot extends IterativeRobot {
 		autoChooser.addDefault("Low Bar Auto", new LowBarAuto());
 		autoChooser.addObject("Reach Auto", new ReachDefAuto());
 		autoChooser.addObject("High Goal Auto", new HiCastleAuto());
+		autoChooser.addObject("Breach B Auto", new BreachBAuto());
 		autoChooser.addObject("No Auto", null);
 
 		testCommand = new CalibrateEverything();
