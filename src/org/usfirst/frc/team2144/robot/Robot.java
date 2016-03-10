@@ -7,6 +7,7 @@ import org.usfirst.frc.team2144.robot.commands.CommandBase;
 import org.usfirst.frc.team2144.robot.commands.HiCastleAuto;
 import org.usfirst.frc.team2144.robot.commands.LowBarAuto;
 import org.usfirst.frc.team2144.robot.commands.ReachDefAuto;
+import org.usfirst.frc.team2144.robot.commands.SpyLowGoalAuto;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -45,6 +46,7 @@ public class Robot extends IterativeRobot {
 		autoChooser.addObject("Reach Auto", new ReachDefAuto());
 		autoChooser.addObject("High Goal Auto", new HiCastleAuto());
 		autoChooser.addObject("Breach B Auto", new BreachBAuto());
+		autoChooser.addObject("Spy Low Auto", new SpyLowGoalAuto());
 		autoChooser.addObject("No Auto", null);
 
 		testCommand = new CalibrateEverything();

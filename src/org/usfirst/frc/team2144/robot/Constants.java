@@ -5,7 +5,7 @@ public class Constants {
 	// linear actuator up/down
 	public static final double actUp = 0.09;
 	public static final double actDown = 0.6;
-	public static final double actHalfDown = actDown - 0.15;
+	public static final double actHalfDown = (actDown - actUp) / 2;
 
 	public static final double actUpAngle = 53;
 	public static final double actDownAngle = -20;
