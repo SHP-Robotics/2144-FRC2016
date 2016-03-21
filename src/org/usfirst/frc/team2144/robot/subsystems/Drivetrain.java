@@ -44,7 +44,7 @@ public class Drivetrain extends Subsystem {
 	}
 
 	public boolean have_encoders_reached_pos(int leftPos, int rightPos) {
-		if (has_left_encoder_reached_pos(leftPos) && has_right_encoder_reached_pos(rightPos)) {
+		if (has_left_encoder_reached_pos(leftPos) || has_right_encoder_reached_pos(rightPos)) {
 			return true;
 		} else {
 			return false;

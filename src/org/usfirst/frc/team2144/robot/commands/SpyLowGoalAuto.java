@@ -27,15 +27,14 @@ public class SpyLowGoalAuto extends CommandGroup {
 		// a CommandGroup containing them would require both the chassis and the
 		// arm.
 
-		addParallel(new AutoIntakeDrive(Constants.actUp + 0.10, Constants.intakeRestingSpeed, false)); // intake
+		addParallel(new AutoIntakeDrive(Constants.actUp + 0.10)); // intake
 		// up
 		addSequential(new ResetDrivetrainEncoders());
-		addSequential(new AutoGyroDrive(0.6, 700)); // drive away from spy
-		addParallel(new AutoIntakeDrive(Constants.actHalfDown, Constants.intakeFireSpeed, false));
-		addSequential(new Delay(2.0));
-		addParallel(new AutoIntakeDrive(Constants.actHalfDown, Constants.intakeFireSpeed, true));
-		addSequential(new Delay(1.0));
-		addParallel(new AutoIntakeDrive(Constants.actHalfDown, Constants.intakeRestingSpeed, false));
+		addSequential(new AutoGyroDrive(0.6, 400)); // drive away from spy
+		addParallel(new AutoIntakeDrive(Constants.actUp));
+		addSequential(new AutoIntakeShooter(Constants.intakeFireSpeed, false), 2.0);
+		addSequential(new AutoIntakeShooter(Constants.intakeFireSpeed, true), 0.5);
+		addSequential(new AutoIntakeShooter(Constants.intakeRestingSpeed, false));
 
 	}
 }

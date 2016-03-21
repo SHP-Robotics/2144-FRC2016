@@ -27,10 +27,10 @@ public class BreachBAuto extends CommandGroup {
 		// a CommandGroup containing them would require both the chassis and the
 		// arm.
 
-		addParallel(new AutoIntakeDrive(Constants.actUp + 0.10, Constants.intakeRestingSpeed, false)); // intake
+		addParallel(new AutoIntakeDrive(Constants.actUp + 0.10)); // intake
 		// up
 		addSequential(new ResetDrivetrainEncoders());
-		addSequential(new AutoGyroDrive(0.9, 3000)); // drive up to low bar
+		addSequential(new AutoGyroDrive(0.9, 3500)); // drive up to low bar
 
 	}
 }
