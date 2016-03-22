@@ -1,6 +1,5 @@
 package org.usfirst.frc.team2144.robot.subsystems;
 
-import java.util.Comparator;
 import java.util.Vector;
 
 import com.ni.vision.NIVision;
@@ -11,6 +10,7 @@ import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.vision.AxisCamera;
+import misc.ParticleReport;
 
 /**
  *
@@ -20,24 +20,6 @@ public class Camera extends Subsystem {
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
 	AxisCamera camera;
-
-	// A structure to hold measurements of a particle
-	public class ParticleReport implements Comparator<ParticleReport>, Comparable<ParticleReport> {
-		double PercentAreaToImageArea;
-		double Area;
-		double BoundingRectLeft;
-		double BoundingRectTop;
-		double BoundingRectRight;
-		double BoundingRectBottom;
-
-		public int compareTo(ParticleReport r) {
-			return (int) (r.Area - this.Area);
-		}
-
-		public int compare(ParticleReport r1, ParticleReport r2) {
-			return (int) (r1.Area - r2.Area);
-		}
-	};
 
 	// Structure to represent the scores for the various tests used for target
 	// identification
@@ -86,6 +68,15 @@ public class Camera extends Subsystem {
 		binaryFrame = NIVision.imaqCreateImage(ImageType.IMAGE_U8, 0);
 		criteria[0] = new NIVision.ParticleFilterCriteria2(NIVision.MeasurementType.MT_AREA_BY_IMAGE_AREA, AREA_MINIMUM,
 				100.0, 0, 0);
+
+		// Put default values to SmartDashboard so fields will appear
+		SmartDashboard.putNumber("Tote hue min", TOTE_HUE_RANGE.minValue);
+		SmartDashboard.putNumber("Tote hue max", TOTE_HUE_RANGE.maxValue);
+		SmartDashboard.putNumber("Tote sat min", TOTE_SAT_RANGE.minValue);
+		SmartDashboard.putNumber("Tote sat max", TOTE_SAT_RANGE.maxValue);
+		SmartDashboard.putNumber("Tote val min", TOTE_VAL_RANGE.minValue);
+		SmartDashboard.putNumber("Tote val max", TOTE_VAL_RANGE.maxValue);
+		SmartDashboard.putNumber("Area min %", AREA_MINIMUM);
 	}
 
 	public boolean getImage(Image image) {
@@ -100,7 +91,7 @@ public class Camera extends Subsystem {
 	}
 
 	public void runProcessing() {// read file in from camera
-		getImage(frame);
+		camera.getImage(frame);
 
 		// Update threshold values from SmartDashboard. For performance reasons
 		// it is recommended to remove this after calibration is finished.
@@ -111,7 +102,7 @@ public class Camera extends Subsystem {
 		TOTE_VAL_RANGE.minValue = (int) SmartDashboard.getNumber("Tote val min", TOTE_VAL_RANGE.minValue);
 		TOTE_VAL_RANGE.maxValue = (int) SmartDashboard.getNumber("Tote val max", TOTE_VAL_RANGE.maxValue);
 
-		// Threshold the image looking for yellow (tote color)
+		// Threshold the image looking for green (tape color)
 		NIVision.imaqColorThreshold(binaryFrame, frame, 255, NIVision.ColorMode.HSV, TOTE_HUE_RANGE, TOTE_SAT_RANGE,
 				TOTE_VAL_RANGE);
 
@@ -166,7 +157,10 @@ public class Camera extends Subsystem {
 			SmartDashboard.putNumber("Area", scores.Area);
 			boolean isTower = scores.Aspect > SCORE_MIN && scores.Area > SCORE_MIN;
 
-			bestParticle = particles.elementAt(0);
+			if (isTower)
+				bestParticle = particles.elementAt(0);
+			else
+				bestParticle = null;
 
 			// Send distance and tote status to dashboard. The bounding rect,
 			// particularly the horizontal center (left - right) may be useful
@@ -174,6 +168,7 @@ public class Camera extends Subsystem {
 			SmartDashboard.putBoolean("IsTower", isTower);
 			SmartDashboard.putNumber("Distance", computeDistance(binaryFrame, particles.elementAt(0)));
 		} else {
+			bestParticle = null;
 			SmartDashboard.putBoolean("IsTower", false);
 		}
 	}

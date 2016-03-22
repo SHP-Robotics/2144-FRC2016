@@ -44,4 +44,11 @@ public class Constants {
 	public static final double autoGyroDriveP = 0.10;
 	public static final double turningTolerance = 3;
 
+	// vision processing vars
+	public static final double VPXTolerance = 3;
+	public static final double VPDistTolerance = 1;
+	public static final double VPTargetDist = 10;
+	public static final double VPTargetX = 120; // should be half resolution;
+												// check before release
+
 }
