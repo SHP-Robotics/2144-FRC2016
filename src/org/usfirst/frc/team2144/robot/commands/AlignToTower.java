@@ -20,6 +20,7 @@ public class AlignToTower extends CommandBase {
 							// HD3000 square, 60 for HD3000 640x480
 	double targetDist = Constants.VPTargetDist;
 	double targetX = Constants.VPTargetX;
+	double distError, xError;
 
 	public AlignToTower() {
 		// Use requires() here to declare subsystem dependencies
@@ -38,16 +39,19 @@ public class AlignToTower extends CommandBase {
 		ParticleReport particle = camera.getParticle();
 
 		if (particle != null) {
-			double distError = computeDistance(derpImage, particle) - targetDist;
-			double xError = targetX - ((particle.BoundingRectRight + particle.BoundingRectLeft) / 2);
+			distError = computeDistance(derpImage, particle) - targetDist;
+			xError = targetX - ((particle.BoundingRectRight + particle.BoundingRectLeft) / 2);
 			
 			drivetrain.arcadeDrive(false, -1 * distError, 0.1 * xError);
+		} else {
+			// commentable; allows driver to make corrections of camera loses sight
+			drivetrain.tankDrive(oi.getPrecise(), oi.getStickY() * -1, oi.getStick2Y() * -1);
 		}
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		return false;
+		return distError < distTolerance && xError < xTolerance;
 	}
 
 	// Called once after isFinished returns true
