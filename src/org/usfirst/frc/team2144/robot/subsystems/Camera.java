@@ -164,17 +164,17 @@ public class Camera extends Subsystem {
 			SmartDashboard.putNumber("Aspect", scores.Aspect);
 			scores.Area = AreaScore(particles.elementAt(0));
 			SmartDashboard.putNumber("Area", scores.Area);
-			boolean isTote = scores.Aspect > SCORE_MIN && scores.Area > SCORE_MIN;
+			boolean isTower = scores.Aspect > SCORE_MIN && scores.Area > SCORE_MIN;
 
 			bestParticle = particles.elementAt(0);
 
 			// Send distance and tote status to dashboard. The bounding rect,
 			// particularly the horizontal center (left - right) may be useful
 			// for rotating/driving towards a tote
-			SmartDashboard.putBoolean("IsTote", isTote);
+			SmartDashboard.putBoolean("IsTower", isTower);
 			SmartDashboard.putNumber("Distance", computeDistance(binaryFrame, particles.elementAt(0)));
 		} else {
-			SmartDashboard.putBoolean("IsTote", false);
+			SmartDashboard.putBoolean("IsTower", false);
 		}
 	}
 
