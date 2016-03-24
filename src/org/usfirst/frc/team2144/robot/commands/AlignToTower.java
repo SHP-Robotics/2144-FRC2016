@@ -5,6 +5,7 @@ import org.usfirst.frc.team2144.robot.Constants;
 import com.ni.vision.NIVision;
 import com.ni.vision.NIVision.Image;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import misc.ParticleReport;
 
 /**
@@ -21,11 +22,19 @@ public class AlignToTower extends CommandBase {
 	double targetDist = Constants.VPTargetDist;
 	double targetX = Constants.VPTargetX;
 	double distError, xError;
+	boolean isAuto = false;
 
 	public AlignToTower() {
 		// Use requires() here to declare subsystem dependencies
 		requires(drivetrain);
 		requires(camera);
+	}
+
+	public AlignToTower(boolean auto) {
+		// Use requires() here to declare subsystem dependencies
+		requires(drivetrain);
+		requires(camera);
+		isAuto = auto;
 	}
 
 	// Called just before this Command runs the first time
@@ -41,17 +50,33 @@ public class AlignToTower extends CommandBase {
 		if (particle != null) {
 			distError = computeDistance(derpImage, particle) - targetDist;
 			xError = targetX - ((particle.BoundingRectRight + particle.BoundingRectLeft) / 2);
-			
-			drivetrain.arcadeDrive(false, -1 * distError, 0.1 * xError);
+
+			// drivetrain.arcadeDrive(false, -1 * distError, 0.1 * xError);
+
+			if (distError < distTolerance && xError < xTolerance) {
+				SmartDashboard.putBoolean("aligned", true);
+			} else {
+				SmartDashboard.putBoolean("aligned", false);
+			}
 		} else {
-			// commentable; allows driver to make corrections of camera loses sight
-			drivetrain.tankDrive(oi.getPrecise(), oi.getStickY() * -1, oi.getStick2Y() * -1);
+			// commentable; allows driver to make corrections of camera loses
+			// sight
+			// drivetrain.tankDrive(oi.getPrecise(), oi.getStickY() * -1,
+			// oi.getStick2Y() * -1);
 		}
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		return distError < distTolerance && xError < xTolerance;
+		if (isAuto) {
+			if (distError < distTolerance && xError < xTolerance) {
+				return true;
+			} else {
+				return false;
+			}
+		} else {
+			return false;
+		}
 	}
 
 	// Called once after isFinished returns true

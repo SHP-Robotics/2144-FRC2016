@@ -10,6 +10,8 @@ public class ControlMap {
 	public static final int mastPitchDownButton = 9;
 	public static final int actUpButton = 11;
 	public static final int actDownButton = 10;
+	public static final int preciseButton = 4;
+	public static final int autoAimButton = 2;
 
 	// right stick
 	public static final int fireButton = 1; // press to move servo to fire pos

@@ -1,5 +1,6 @@
 package org.usfirst.frc.team2144.robot;
 
+import org.usfirst.frc.team2144.robot.commands.AlignToTower;
 import org.usfirst.frc.team2144.robot.commands.IntakePitchOverride;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -15,9 +16,12 @@ public class OI {
 	Joystick right = new Joystick(1);
 
 	JoystickButton actEmergOverrideButton = new JoystickButton(right, ControlMap.actEmergOverrideButton);
+	JoystickButton autoAimButton = new JoystickButton(left, ControlMap.autoAimButton);
 
 	public OI() {
 		actEmergOverrideButton.whenPressed(new IntakePitchOverride());
+		autoAimButton.whileHeld(new AlignToTower());
+
 	}
 
 	public double getStickX() {
@@ -44,7 +48,7 @@ public class OI {
 	}
 
 	public boolean getPrecise() {
-		return false;
+		return left.getRawButton(ControlMap.preciseButton);
 	}
 
 	public boolean getFire() {
@@ -74,19 +78,19 @@ public class OI {
 	public boolean getMastPitchDown() {
 		return left.getRawButton(ControlMap.mastPitchDownButton);
 	}
-	
+
 	public boolean getMastWinchUp() {
 		return right.getRawButton(ControlMap.mastWinchUpButton);
 	}
-	
+
 	public boolean getMastWinchDown() {
 		return right.getRawButton(ControlMap.mastWinchDownButton);
 	}
-	
+
 	public boolean getMastHookUp() {
 		return right.getRawButton(ControlMap.mastHookUpButton);
 	}
-	
+
 	public boolean getMastHookDown() {
 		return right.getRawButton(ControlMap.mastHookDownButton);
 	}
