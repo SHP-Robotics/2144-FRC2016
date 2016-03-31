@@ -11,7 +11,7 @@ import misc.ParticleReport;
 /**
  *
  */
-public class AlignToTower extends CommandBase {
+/*public class AlignToTower extends CommandBase {
 
 	double xTolerance = Constants.VPXTolerance;
 	double distTolerance = Constants.VPDistTolerance;
@@ -39,30 +39,41 @@ public class AlignToTower extends CommandBase {
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
-		camera.getImage(derpImage);
+		try {
+			camera.getImage(derpImage);
+		} catch (NullPointerException e) {
+
+		} finally {
+
+		}
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		camera.runProcessing();
-		ParticleReport particle = camera.getParticle();
+		if (derpImage != null) {
+			camera.runProcessing();
+			ParticleReport particle = camera.getParticle();
 
-		if (particle != null) {
-			distError = computeDistance(derpImage, particle) - targetDist;
-			xError = targetX - ((particle.BoundingRectRight + particle.BoundingRectLeft) / 2);
+			if (particle != null) {
+				distError = computeDistance(derpImage, particle) - targetDist;
+				xError = targetX - ((particle.BoundingRectRight + particle.BoundingRectLeft) / 2);
 
-			// drivetrain.arcadeDrive(false, -1 * distError, 0.1 * xError);
+				// drivetrain.arcadeDrive(false, -1 * distError, 0.1 * xError);
 
-			if (distError < distTolerance && xError < xTolerance) {
-				SmartDashboard.putBoolean("aligned", true);
+				if (distError < distTolerance && xError < xTolerance) {
+					SmartDashboard.putBoolean("aligned", true);
+				} else {
+					SmartDashboard.putBoolean("aligned", false);
+				}
 			} else {
-				SmartDashboard.putBoolean("aligned", false);
+				// commentable; allows driver to make corrections of camera
+				// loses
+				// sight
+				// drivetrain.tankDrive(oi.getPrecise(), oi.getStickY() * -1,
+				// oi.getStick2Y() * -1);
 			}
 		} else {
-			// commentable; allows driver to make corrections of camera loses
-			// sight
-			// drivetrain.tankDrive(oi.getPrecise(), oi.getStickY() * -1,
-			// oi.getStick2Y() * -1);
+			initialize();
 		}
 	}
 
@@ -101,7 +112,7 @@ public class AlignToTower extends CommandBase {
 	 *            The Particle Analysis Report for the particle
 	 * 
 	 * @return The estimated distance to the target in feet.
-	 */
+	 *
 	double computeDistance(Image image, ParticleReport report) {
 		double normalizedWidth, targetWidth;
 		NIVision.GetImageSizeResult size;
@@ -112,4 +123,4 @@ public class AlignToTower extends CommandBase {
 
 		return targetWidth / (normalizedWidth * 12 * Math.tan(VIEW_ANGLE * Math.PI / (180 * 2)));
 	}
-}
+}*/

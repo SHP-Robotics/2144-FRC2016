@@ -18,7 +18,7 @@ public class Constants {
 	public static final double intakeServoResting = 0.9;
 
 	// intake PID values
-	public static final double intakeP = 5;
+	public static final double intakeP = 10;
 	public static final double intakeI = 0;
 	public static final double intakeD = 0;
 
@@ -42,7 +42,7 @@ public class Constants {
 
 	// auto vars
 	public static final double autoGyroDriveP = 0.10;
-	public static final double turningTolerance = 3;
+	public static final double turningTolerance = 1.5;
 
 	// vision processing vars
 	public static final double VPXTolerance = 3;

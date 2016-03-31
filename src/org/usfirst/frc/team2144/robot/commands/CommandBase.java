@@ -33,7 +33,7 @@ public abstract class CommandBase extends Command {
 	public static MastWinch mastWinch = new MastWinch();
 	public static MastHook mastHook = new MastHook();
 	public static Sensors sensors = new Sensors();
-	public static Camera camera = new Camera();
+	// public static Camera camera = new Camera();
 
 	public static void init() {
 		// This MUST be here. If the OI creates Commands (which it very likely

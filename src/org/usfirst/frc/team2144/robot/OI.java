@@ -1,6 +1,6 @@
 package org.usfirst.frc.team2144.robot;
 
-import org.usfirst.frc.team2144.robot.commands.AlignToTower;
+//import org.usfirst.frc.team2144.robot.commands.AlignToTower;
 import org.usfirst.frc.team2144.robot.commands.IntakePitchOverride;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -16,11 +16,11 @@ public class OI {
 	Joystick right = new Joystick(1);
 
 	JoystickButton actEmergOverrideButton = new JoystickButton(right, ControlMap.actEmergOverrideButton);
-	JoystickButton autoAimButton = new JoystickButton(left, ControlMap.autoAimButton);
+	// JoystickButton autoAimButton = new JoystickButton(left, ControlMap.autoAimButton);
 
 	public OI() {
 		actEmergOverrideButton.whenPressed(new IntakePitchOverride());
-		autoAimButton.whileHeld(new AlignToTower());
+		//autoAimButton.whileHeld(new AlignToTower());
 
 	}
 

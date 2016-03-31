@@ -33,14 +33,14 @@ public class Drivetrain extends Subsystem {
 		if (!isPrecise)
 			robit.arcadeDrive(stickY, stickX);
 		else
-			robit.arcadeDrive(stickY / 2, stickX / 2);
+			robit.arcadeDrive(stickY / 1.7, stickX / 1.7);
 	}
 
 	public void tankDrive(boolean isPrecise, double leftStickY, double rightStickY) {
 		if (!isPrecise)
 			robit.tankDrive(leftStickY, rightStickY);
 		else
-			robit.tankDrive(leftStickY / 2, rightStickY / 2);
+			robit.tankDrive(leftStickY / 1.7, rightStickY / 1.7);
 	}
 
 	public boolean have_encoders_reached_pos(int leftPos, int rightPos) {

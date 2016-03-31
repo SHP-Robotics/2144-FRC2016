@@ -63,7 +63,7 @@ public class Camera extends Subsystem {
 	ParticleReport bestParticle;
 
 	public Camera() {
-		camera = new AxisCamera("10.21.44.59");
+		camera = new AxisCamera("169.254.213.173");
 		frame = NIVision.imaqCreateImage(ImageType.IMAGE_RGB, 0);
 		binaryFrame = NIVision.imaqCreateImage(ImageType.IMAGE_U8, 0);
 		criteria[0] = new NIVision.ParticleFilterCriteria2(NIVision.MeasurementType.MT_AREA_BY_IMAGE_AREA, AREA_MINIMUM,
@@ -80,7 +80,13 @@ public class Camera extends Subsystem {
 	}
 
 	public boolean getImage(Image image) {
-		return camera.getImage(image);
+		try {
+			return camera.getImage(image);
+		} catch (NullPointerException e) {
+			return false;
+		} finally {
+
+		}
 	}
 
 	public ParticleReport getParticle() {
@@ -91,85 +97,98 @@ public class Camera extends Subsystem {
 	}
 
 	public void runProcessing() {// read file in from camera
-		camera.getImage(frame);
+		try {
+			camera.getImage(frame);
+		} catch (NullPointerException e) {
 
-		// Update threshold values from SmartDashboard. For performance reasons
-		// it is recommended to remove this after calibration is finished.
-		TOTE_HUE_RANGE.minValue = (int) SmartDashboard.getNumber("Tote hue min", TOTE_HUE_RANGE.minValue);
-		TOTE_HUE_RANGE.maxValue = (int) SmartDashboard.getNumber("Tote hue max", TOTE_HUE_RANGE.maxValue);
-		TOTE_SAT_RANGE.minValue = (int) SmartDashboard.getNumber("Tote sat min", TOTE_SAT_RANGE.minValue);
-		TOTE_SAT_RANGE.maxValue = (int) SmartDashboard.getNumber("Tote sat max", TOTE_SAT_RANGE.maxValue);
-		TOTE_VAL_RANGE.minValue = (int) SmartDashboard.getNumber("Tote val min", TOTE_VAL_RANGE.minValue);
-		TOTE_VAL_RANGE.maxValue = (int) SmartDashboard.getNumber("Tote val max", TOTE_VAL_RANGE.maxValue);
+		} finally {
 
-		// Threshold the image looking for green (tape color)
-		NIVision.imaqColorThreshold(binaryFrame, frame, 255, NIVision.ColorMode.HSV, TOTE_HUE_RANGE, TOTE_SAT_RANGE,
-				TOTE_VAL_RANGE);
+			// Update threshold values from SmartDashboard. For performance
+			// reasons
+			// it is recommended to remove this after calibration is finished.
+			TOTE_HUE_RANGE.minValue = (int) SmartDashboard.getNumber("Tote hue min", TOTE_HUE_RANGE.minValue);
+			TOTE_HUE_RANGE.maxValue = (int) SmartDashboard.getNumber("Tote hue max", TOTE_HUE_RANGE.maxValue);
+			TOTE_SAT_RANGE.minValue = (int) SmartDashboard.getNumber("Tote sat min", TOTE_SAT_RANGE.minValue);
+			TOTE_SAT_RANGE.maxValue = (int) SmartDashboard.getNumber("Tote sat max", TOTE_SAT_RANGE.maxValue);
+			TOTE_VAL_RANGE.minValue = (int) SmartDashboard.getNumber("Tote val min", TOTE_VAL_RANGE.minValue);
+			TOTE_VAL_RANGE.maxValue = (int) SmartDashboard.getNumber("Tote val max", TOTE_VAL_RANGE.maxValue);
 
-		// Send particle count to dashboard
-		int numParticles = NIVision.imaqCountParticles(binaryFrame, 1);
-		SmartDashboard.putNumber("Masked particles", numParticles);
+			// Threshold the image looking for green (tape color)
+			NIVision.imaqColorThreshold(binaryFrame, frame, 255, NIVision.ColorMode.HSV, TOTE_HUE_RANGE, TOTE_SAT_RANGE,
+					TOTE_VAL_RANGE);
 
-		// Send masked image to dashboard to assist in tweaking mask.
-		CameraServer.getInstance().setImage(binaryFrame);
+			// Send particle count to dashboard
+			int numParticles = NIVision.imaqCountParticles(binaryFrame, 1);
+			SmartDashboard.putNumber("Masked particles", numParticles);
 
-		// filter out small particles
-		float areaMin = (float) SmartDashboard.getNumber("Area min %", AREA_MINIMUM);
-		criteria[0].lower = areaMin;
-		imaqError = NIVision.imaqParticleFilter4(binaryFrame, binaryFrame, criteria, filterOptions, null);
+			// Send masked image to dashboard to assist in tweaking mask.
+			CameraServer.getInstance().setImage(binaryFrame);
 
-		// Send particle count after filtering to dashboard
-		numParticles = NIVision.imaqCountParticles(binaryFrame, 1);
-		SmartDashboard.putNumber("Filtered particles", numParticles);
+			// filter out small particles
+			float areaMin = (float) SmartDashboard.getNumber("Area min %", AREA_MINIMUM);
+			criteria[0].lower = areaMin;
+			imaqError = NIVision.imaqParticleFilter4(binaryFrame, binaryFrame, criteria, filterOptions, null);
 
-		if (numParticles > 0) {
-			// Measure particles and sort by particle size
-			Vector<ParticleReport> particles = new Vector<ParticleReport>();
-			for (int particleIndex = 0; particleIndex < numParticles; particleIndex++) {
-				ParticleReport par = new ParticleReport();
-				par.PercentAreaToImageArea = NIVision.imaqMeasureParticle(binaryFrame, particleIndex, 0,
-						NIVision.MeasurementType.MT_AREA_BY_IMAGE_AREA);
-				par.Area = NIVision.imaqMeasureParticle(binaryFrame, particleIndex, 0,
-						NIVision.MeasurementType.MT_AREA);
-				par.BoundingRectTop = NIVision.imaqMeasureParticle(binaryFrame, particleIndex, 0,
-						NIVision.MeasurementType.MT_BOUNDING_RECT_TOP);
-				par.BoundingRectLeft = NIVision.imaqMeasureParticle(binaryFrame, particleIndex, 0,
-						NIVision.MeasurementType.MT_BOUNDING_RECT_LEFT);
-				par.BoundingRectBottom = NIVision.imaqMeasureParticle(binaryFrame, particleIndex, 0,
-						NIVision.MeasurementType.MT_BOUNDING_RECT_BOTTOM);
-				par.BoundingRectRight = NIVision.imaqMeasureParticle(binaryFrame, particleIndex, 0,
-						NIVision.MeasurementType.MT_BOUNDING_RECT_RIGHT);
-				particles.add(par);
-			}
-			particles.sort(null);
+			// Send particle count after filtering to dashboard
+			numParticles = NIVision.imaqCountParticles(binaryFrame, 1);
+			SmartDashboard.putNumber("Filtered particles", numParticles);
 
-			// This example only scores the largest particle. Extending to score
-			// all particles and choosing the desired one is left as an exercise
-			// for the reader. Note that this scores and reports information
-			// about a single particle (single L shaped target). To get accurate
-			// information
-			// about the location of the tote (not just the distance) you will
-			// need to correlate two adjacent targets in order to find the true
-			// center of the tote.
-			scores.Aspect = AspectScore(particles.elementAt(0));
-			SmartDashboard.putNumber("Aspect", scores.Aspect);
-			scores.Area = AreaScore(particles.elementAt(0));
-			SmartDashboard.putNumber("Area", scores.Area);
-			boolean isTower = scores.Aspect > SCORE_MIN && scores.Area > SCORE_MIN;
+			if (numParticles > 0) {
+				// Measure particles and sort by particle size
+				Vector<ParticleReport> particles = new Vector<ParticleReport>();
+				for (int particleIndex = 0; particleIndex < numParticles; particleIndex++) {
+					ParticleReport par = new ParticleReport();
+					par.PercentAreaToImageArea = NIVision.imaqMeasureParticle(binaryFrame, particleIndex, 0,
+							NIVision.MeasurementType.MT_AREA_BY_IMAGE_AREA);
+					par.Area = NIVision.imaqMeasureParticle(binaryFrame, particleIndex, 0,
+							NIVision.MeasurementType.MT_AREA);
+					par.BoundingRectTop = NIVision.imaqMeasureParticle(binaryFrame, particleIndex, 0,
+							NIVision.MeasurementType.MT_BOUNDING_RECT_TOP);
+					par.BoundingRectLeft = NIVision.imaqMeasureParticle(binaryFrame, particleIndex, 0,
+							NIVision.MeasurementType.MT_BOUNDING_RECT_LEFT);
+					par.BoundingRectBottom = NIVision.imaqMeasureParticle(binaryFrame, particleIndex, 0,
+							NIVision.MeasurementType.MT_BOUNDING_RECT_BOTTOM);
+					par.BoundingRectRight = NIVision.imaqMeasureParticle(binaryFrame, particleIndex, 0,
+							NIVision.MeasurementType.MT_BOUNDING_RECT_RIGHT);
+					particles.add(par);
+				}
+				particles.sort(null);
 
-			if (isTower)
-				bestParticle = particles.elementAt(0);
-			else
+				// This example only scores the largest particle. Extending to
+				// score
+				// all particles and choosing the desired one is left as an
+				// exercise
+				// for the reader. Note that this scores and reports information
+				// about a single particle (single L shaped target). To get
+				// accurate
+				// information
+				// about the location of the tote (not just the distance) you
+				// will
+				// need to correlate two adjacent targets in order to find the
+				// true
+				// center of the tote.
+				scores.Aspect = AspectScore(particles.elementAt(0));
+				SmartDashboard.putNumber("Aspect", scores.Aspect);
+				scores.Area = AreaScore(particles.elementAt(0));
+				SmartDashboard.putNumber("Area", scores.Area);
+				boolean isTower = scores.Aspect > SCORE_MIN && scores.Area > SCORE_MIN;
+
+				if (isTower)
+					bestParticle = particles.elementAt(0);
+				else
+					bestParticle = null;
+
+				// Send distance and tote status to dashboard. The bounding
+				// rect,
+				// particularly the horizontal center (left - right) may be
+				// useful
+				// for rotating/driving towards a tote
+				SmartDashboard.putBoolean("IsTower", isTower);
+				SmartDashboard.putNumber("Distance", computeDistance(binaryFrame, particles.elementAt(0)));
+			} else {
 				bestParticle = null;
-
-			// Send distance and tote status to dashboard. The bounding rect,
-			// particularly the horizontal center (left - right) may be useful
-			// for rotating/driving towards a tote
-			SmartDashboard.putBoolean("IsTower", isTower);
-			SmartDashboard.putNumber("Distance", computeDistance(binaryFrame, particles.elementAt(0)));
-		} else {
-			bestParticle = null;
-			SmartDashboard.putBoolean("IsTower", false);
+				SmartDashboard.putBoolean("IsTower", false);
+			}
 		}
 	}
 

@@ -34,7 +34,7 @@ public class LowBarAuto extends CommandGroup {
 		addParallel(new AutoIntakeDrive(Constants.actDown)); // intake
 																// down
 		addSequential(new ResetDrivetrainEncoders());
-		addSequential(new AutoGyroDrive(0.6, 2300)); // drive through low bar
+		addSequential(new AutoGyroDrive(0.6, 3000)); // drive through low bar
 		addParallel(new AutoIntakeDrive(Constants.actUp + 0.10)); // intake
 																	// up
 		// addSequential(new ResetDrivetrainEncoders());

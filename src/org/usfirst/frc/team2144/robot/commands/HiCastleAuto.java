@@ -27,19 +27,18 @@ public class HiCastleAuto extends CommandGroup {
 		// a CommandGroup containing them would require both the chassis and the
 		// arm.
 
-		addParallel(new AutoIntakeDrive(Constants.actUp + 0.10)); // intake
-		// up
+		addParallel(new AutoIntakeDrive(Constants.actUp + 0.10)); // intake up
 		addSequential(new ResetDrivetrainEncoders());
 		addSequential(new AutoGyroDrive(0.6, 700)); // drive up to low bar
-		addParallel(new AutoIntakeDrive(Constants.actDown)); // intake
-		// down
+		addParallel(new AutoIntakeDrive(Constants.actDown)); // intake down
 		addSequential(new ResetDrivetrainEncoders());
-		addSequential(new AutoGyroDrive(0.6, 2300)); // drive through low bar
-		addParallel(new AutoIntakeDrive(Constants.actUp + 0.10)); // intake
-		// up
+		addSequential(new AutoGyroDrive(0.6, 3000)); // drive through low bar
+		addParallel(new AutoIntakeDrive(Constants.actUp)); // intake up
 		addSequential(new ResetDrivetrainEncoders());
-		addSequential(new AutoGyroDrive(0.6, 1000)); // drive towards
-		// castle
+		addSequential(new AutoGyroDrive(0.6, 1000)); // drive towards castle
 		addSequential(new AutoGyroTurn(0.6, 45));
+		addSequential(new AutoIntakeShooter(Constants.intakeFireSpeed, false), 2.0);
+		addSequential(new AutoIntakeShooter(Constants.intakeFireSpeed, true), 0.5);
+		addSequential(new AutoIntakeShooter(Constants.intakeRestingSpeed, false));
 	}
 }
