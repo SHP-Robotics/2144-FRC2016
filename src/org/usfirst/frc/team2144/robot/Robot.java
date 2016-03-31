@@ -2,7 +2,6 @@
 package org.usfirst.frc.team2144.robot;
 
 import org.usfirst.frc.team2144.robot.commands.BreachBAuto;
-import org.usfirst.frc.team2144.robot.commands.CalibrateEverything;
 import org.usfirst.frc.team2144.robot.commands.CommandBase;
 import org.usfirst.frc.team2144.robot.commands.HiCastleAuto;
 import org.usfirst.frc.team2144.robot.commands.LowBarAuto;
@@ -31,7 +30,6 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 
 	Command autonomousCommand;
-	CalibrateEverything testCommand;
 	SendableChooser autoChooser;
 
 	/**
@@ -49,7 +47,6 @@ public class Robot extends IterativeRobot {
 		autoChooser.addObject("Spy Low Auto", new SpyLowGoalAuto());
 		autoChooser.addObject("No Auto", null);
 
-		testCommand = new CalibrateEverything();
 
 		SmartDashboard.putData("Auto Chooser", autoChooser);
 
@@ -85,8 +82,6 @@ public class Robot extends IterativeRobot {
 	}
 
 	public void disabledInit() {
-		if (testCommand != null)
-			testCommand.cancel();
 	}
 
 	public void disabledPeriodic() {

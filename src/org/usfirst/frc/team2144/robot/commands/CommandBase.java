@@ -1,13 +1,9 @@
 package org.usfirst.frc.team2144.robot.commands;
 
 import org.usfirst.frc.team2144.robot.OI;
-import org.usfirst.frc.team2144.robot.subsystems.Camera;
 import org.usfirst.frc.team2144.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team2144.robot.subsystems.Intake;
 import org.usfirst.frc.team2144.robot.subsystems.IntakePitch;
-import org.usfirst.frc.team2144.robot.subsystems.MastHook;
-import org.usfirst.frc.team2144.robot.subsystems.MastPitch;
-import org.usfirst.frc.team2144.robot.subsystems.MastWinch;
 import org.usfirst.frc.team2144.robot.subsystems.Sensors;
 import org.usfirst.frc.team2144.robot.subsystems.Winch;
 
@@ -29,9 +25,6 @@ public abstract class CommandBase extends Command {
 	public static Intake intake = new Intake();
 	public static IntakePitch intakePitch = new IntakePitch();
 	public static Winch winch = new Winch();
-	public static MastPitch mastPitch = new MastPitch();
-	public static MastWinch mastWinch = new MastWinch();
-	public static MastHook mastHook = new MastHook();
 	public static Sensors sensors = new Sensors();
 	// public static Camera camera = new Camera();
 
@@ -47,7 +40,7 @@ public abstract class CommandBase extends Command {
 		// SmartDashboard.putData(drivetrain);
 		// SmartDashboard.putData(intake);
 		// SmartDashboard.putData(intakePitch);
-		mastPitch.reset_encoder();
+
 		sensors.init();
 	}
 
