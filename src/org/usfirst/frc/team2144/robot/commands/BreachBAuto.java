@@ -30,7 +30,7 @@ public class BreachBAuto extends CommandGroup {
 		addParallel(new AutoIntakeDrive(Constants.actUp + 0.10)); // intake
 		// up
 		addSequential(new ResetDrivetrainEncoders());
-		addSequential(new AutoGyroDrive(1.0, 3500)); // drive up to low bar
+		addSequential(new AutoGyroDrive(1.0, 4000)); // drive up to low bar
 
 	}
 }

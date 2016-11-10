@@ -58,7 +58,7 @@ public class Robot extends IterativeRobot {
 
 	public void autonomousInit() {
 		// schedule the autonomous command (example)
-		autonomousCommand = (Command) autoChooser.getSelected();
+		autonomousCommand = (Command) new BreachBAuto();
 
 		if (autonomousCommand != null)
 			autonomousCommand.start();
